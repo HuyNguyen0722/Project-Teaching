@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard - Your E-commerce</title>
+    <link rel="stylesheet" href="../../static/css/admin-dashboard.css" />
+  </head>
+  <body>
+    <div class="sidebar">
+      <div class="sidebar-header">
+        <h3>Admin Panel</h3>
+      </div>
+      <ul class="sidebar-menu">
+        <li><a href="#" class="active">Dashboard</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="orders.html">Orders</a></li>
+        <li><a href="users.html">Users</a></li>
+        <li><a href="coupons.html">Coupons</a></li>
+        <li><a href="#" id="logoutBtn">Logout</a></li>
+      </ul>
+    </div>
+    <div class="main-content">
+      <header>
+        <h1>Dashboard Overview</h1>
+      </header>
+      <section class="stats-grid">
+        <div class="stat-card">
+          <h3>Total Sales</h3>
+          <p>$<span id="totalSales">0.00</span></p>
+        </div>
+        <div class="stat-card">
+          <h3>Total Orders</h3>
+          <p><span id="totalOrders">0</span></p>
+        </div>
+        <div class="stat-card">
+          <h3>New Users (Today)</h3>
+          <p><span id="newUsersToday">0</span></p>
+        </div>
+      </section>
+
+      <section class="recent-activity">
+        <h2>Recent Orders</h2>
+        <div id="recentOrdersList">
+          <p>Loading recent orders...</p>
+        </div>
+      </section>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+
+    <script>
+      const firebaseConfig = {
+        apiKey: "AIzaSyDhRhLAvh22RAYh_6rELSYHMd2AaY51Ruw",
+        authDomain: "project-teaching-89801.firebaseapp.com",
+        projectId: "project-teaching-89801",
+        storageBucket: "project-teaching-89801.firebasestorage.app",
+        messagingSenderId: "441282021443",
+        appId: "1:441282021443:web:223ef629568b9b6e39acf6",
+        measurementId: "G-KB0ZT3GR3K",
+      };
+
+      const app = firebase.initializeApp(firebaseConfig);
+      const auth = firebase.auth();
+      const db = firebase.firestore();
+
+      auth.onAuthStateChanged((user) => {
+        if (!user) {
+          window.location.href = "auth.html";
+        } else {
+          db.collection("users")
+            .doc(user.uid)
+            .get()
+            .then((doc) => {
+              if (!doc.exists || doc.data().role !== "admin") {
+                auth.signOut();
+                window.location.href = "auth.html";
+              }
+            })
+            .catch((error) => {
+              console.error("Error getting user role:", error);
+              auth.signOut();
+              window.location.href = "auth.html";
+            });
+        }
+      });
+    </script>
+    <script src="../../static/js/admin-dashboard.js"></script>
+  </body>
+</html>

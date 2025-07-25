@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Manage Orders - Admin</title>
+    <link rel="stylesheet" href="../../static/css/admin-dashboard.css" />
+    <link rel="stylesheet" href="../../static/css/orders.css" />
+  </head>
+  <body>
+    <div class="sidebar">
+      <div class="sidebar-header">
+        <h3>Admin Panel</h3>
+      </div>
+      <ul class="sidebar-menu">
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="orders.html" class="active">Orders</a></li>
+        <li><a href="users.html">Users</a></li>
+        <li><a href="coupons.html">Coupons</a></li>
+        <li><a href="#" id="logoutBtn">Logout</a></li>
+      </ul>
+    </div>
+    <div class="main-content">
+      <header>
+        <h1>Manage Orders</h1>
+      </header>
+
+      <section class="order-list-section">
+        <h2>Current Orders</h2>
+        <div class="table-responsive">
+          <table id="ordersTable" class="data-table">
+            <thead>
+              <tr>
+                <th>Order ID</th>
+                <th>Customer</th>
+                <th>Total</th>
+                <th>Status</th>
+                <th>Order Date</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td colspan="6">Loading orders...</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+
+    <div id="orderDetailModal" class="modal">
+      <div class="modal-content">
+        <span class="close-button">&times;</span>
+        <h2 id="orderModalTitle">Order Details</h2>
+        <div id="orderDetailContent">
+          <p>Loading order details...</p>
+        </div>
+        <div class="modal-actions">
+          <select id="orderStatusSelect" class="status-select">
+            <option value="Pending">Pending</option>
+            <option value="Processing">Processing</option>
+            <option value="Shipped">Shipped</option>
+            <option value="Delivered">Delivered</option>
+            <option value="Cancelled">Cancelled</option>
+          </select>
+          <button id="updateStatusBtn" class="action-btn primary-btn">
+            Update Status
+          </button>
+          <button id="closeDetailModalBtn" class="action-btn secondary-btn">
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-storage-compat.js"></script>
+
+    <script>
+      const firebaseConfig = {
+        apiKey: "AIzaSyDhRhLAvh22RAYh_6rELSYHMd2AaY51Ruw",
+        authDomain: "project-teaching-89801.firebaseapp.com",
+        projectId: "project-teaching-89801",
+        storageBucket: "project-teaching-89801.firebasestorage.app",
+        messagingSenderId: "441282021443",
+        appId: "1:441282021443:web:223ef629568b9b6e39acf6",
+        measurementId: "G-KB0ZT3GR3K",
+      };
+
+      // Initialize Firebase (giữ nguyên)
+      const app = firebase.initializeApp(firebaseConfig);
+      const auth = firebase.auth();
+      const db = firebase.firestore();
+      const storage = firebase.storage();
+    </script>
+    <script src="../../static/js/admin-auth-check.js"></script>
+    <script src="../../static/js/order-management.js"></script>
+    <script>
+      // Logic cụ thể cho trang orders.html
+      document.addEventListener("DOMContentLoaded", async () => {
+        const ordersTableBody = document.querySelector("#ordersTable tbody");
+        const orderDetailModal = document.getElementById("orderDetailModal");
+        const closeButton = orderDetailModal.querySelector(".close-button");
+        const orderModalTitle = document.getElementById("orderModalTitle");
+        const orderDetailContent =
+          document.getElementById("orderDetailContent");
+        const orderStatusSelect = document.getElementById("orderStatusSelect");
+        const updateStatusBtn = document.getElementById("updateStatusBtn");
+        const closeDetailModalBtn = document.getElementById(
+          "closeDetailModalBtn"
+        );
+
+        let currentOrderId = null; // Để lưu ID đơn hàng đang được xem/sửa
+
+        // Hàm hiển thị danh sách đơn hàng
+        async function displayOrders() {
+          ordersTableBody.innerHTML =
+            '<tr><td colspan="6">Loading orders...</td></tr>';
+          try {
+            const orders = await getAllOrders();
+            if (orders.length === 0) {
+              ordersTableBody.innerHTML =
+                '<tr><td colspan="6">No orders found.</td></tr>';
+              return;
+            }
+
+            ordersTableBody.innerHTML = orders
+              .map(
+                (order) => `
+                        <tr>
+                            <td>${order.id}</td>
+                            <td>${
+                              order.customerInfo
+                                ? order.customerInfo.name
+                                : "N/A"
+                            }</td>
+                            <td>$${
+                              order.totalAmount
+                                ? order.totalAmount.toFixed(2)
+                                : "0.00"
+                            }</td>
+                            <td><span class="status-badge status-${order.status.toLowerCase()}">${
+                  order.status
+                }</span></td>
+                            <td>${
+                              order.orderDate
+                                ? new Date(
+                                    order.orderDate.toDate()
+                                  ).toLocaleDateString()
+                                : "N/A"
+                            }</td>
+                            <td>
+                                <button onclick="viewOrder('${
+                                  order.id
+                                }')" class="action-btn view-btn">View</button>
+                                <button class="action-btn delete-btn" onclick="deleteOrderHandler('${
+                                  order.id
+                                }')">Delete</button>
+                            </td>
+                        </tr>
+                    `
+              )
+              .join("");
+          } catch (error) {
+            ordersTableBody.innerHTML = `<tr><td colspan="6" style="color: red;">Error loading orders: ${error.message}</td></tr>`;
+            console.error("Failed to display orders:", error);
+          }
+        }
+
+        // Hàm mở popup chi tiết đơn hàng
+        window.viewOrder = async (orderId) => {
+          orderDetailContent.innerHTML = "<p>Loading order details...</p>";
+          orderDetailModal.style.display = "flex";
+          currentOrderId = orderId; // Lưu ID đơn hàng hiện tại
+
+          try {
+            const order = await getOrderById(orderId);
+            if (order) {
+              orderModalTitle.textContent = `Order Details: ${order.id}`;
+              let itemsHtml = order.items
+                .map(
+                  (item) => `
+                            <li>
+                                <img src="${
+                                  item.imageUrl ||
+                                  "https://via.placeholder.com/40x40?text=No+Image"
+                                }" alt="${item.name}" class="order-item-image">
+                                ${item.name} (x${item.quantity}) - $${(
+                    item.price * item.quantity
+                  ).toFixed(2)}
+                            </li>
+                        `
+                )
+                .join("");
+
+              orderDetailContent.innerHTML = `
+                            <p><strong>Customer:</strong> ${
+                              order.customerInfo
+                                ? order.customerInfo.name
+                                : "N/A"
+                            }</p>
+                            <p><strong>Email:</strong> ${
+                              order.customerInfo
+                                ? order.customerInfo.email
+                                : "N/A"
+                            }</p>
+                            <p><strong>Phone:</strong> ${
+                              order.customerInfo
+                                ? order.customerInfo.phone
+                                : "N/A"
+                            }</p>
+                            <p><strong>Address:</strong> ${
+                              order.customerInfo
+                                ? order.customerInfo.address
+                                : "N/A"
+                            }</p>
+                            <p><strong>Order Date:</strong> ${
+                              order.orderDate
+                                ? new Date(
+                                    order.orderDate.toDate()
+                                  ).toLocaleString()
+                                : "N/A"
+                            }</p>
+                            <p><strong>Payment Method:</strong> ${
+                              order.paymentMethod || "N/A"
+                            }</p>
+                            <p><strong>Shipping Fee:</strong> $${
+                              order.shippingFee
+                                ? order.shippingFee.toFixed(2)
+                                : "0.00"
+                            }</p>
+                            <p><strong>Coupon:</strong> ${
+                              order.couponCode || "None"
+                            } (Discount: $${
+                order.discountAmount ? order.discountAmount.toFixed(2) : "0.00"
+              })</p>
+                            <p><strong>Total Amount:</strong> $${
+                              order.totalAmount
+                                ? order.totalAmount.toFixed(2)
+                                : "0.00"
+                            }</p>
+                            <h3>Items:</h3>
+                            <ul class="order-items-list">${itemsHtml}</ul>
+                        `;
+              orderStatusSelect.value = order.status;
+            }
+          } catch (error) {
+            orderDetailContent.innerHTML = `<p style="color: red;">Error loading order details: ${error.message}</p>`;
+            console.error("Error loading order details:", error);
+          }
+        };
+
+        updateStatusBtn.addEventListener("click", async () => {
+          if (!currentOrderId) return;
+          const newStatus = orderStatusSelect.value;
+          try {
+            await updateOrderStatus(currentOrderId, { status: newStatus });
+            alert(`Order ${currentOrderId} status updated to ${newStatus}.`);
+            closeModal(); // Đóng modal
+            await displayOrders();
+          } catch (error) {
+            alert(`Failed to update order status: ${error.message}`);
+            console.error("Error updating order status:", error);
+          }
+        });
+
+        window.deleteOrderHandler = async (orderId) => {
+          if (confirm(`Are you sure you want to delete order ${orderId}?`)) {
+            try {
+              await deleteOrder(orderId);
+              alert("Order deleted successfully!");
+              await displayOrders(); // Cập nhật danh sách
+            } catch (error) {
+              alert(`Failed to delete order: ${error.message}`);
+              console.error("Order deletion error:", error);
+            }
+          }
+        };
+
+        closeButton.addEventListener(
+          "click",
+          () => (orderDetailModal.style.display = "none")
+        );
+        closeDetailModalBtn.addEventListener(
+          "click",
+          () => (orderDetailModal.style.display = "none")
+        );
+        window.addEventListener("click", (event) => {
+          if (event.target == orderDetailModal) {
+            orderDetailModal.style.display = "none";
+          }
+        });
+
+        const logoutBtn = document.getElementById("logoutBtn");
+        if (logoutBtn) {
+          logoutBtn.addEventListener("click", async (e) => {
+            e.preventDefault();
+            try {
+              await auth.signOut();
+              window.location.href = "auth.html";
+            } catch (error) {
+              console.error("Logout Error:", error);
+              alert("Error logging out. Please try again.");
+            }
+          });
+        }
+
+        await displayOrders();
+      });
+    </script>
+  </body>
+</html>
