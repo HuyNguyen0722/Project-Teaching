@@ -1,3 +1,7 @@
+import { auth, db } from './firebase-init.js';
+import { GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup, signOut } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
+import { doc, setDoc, collection, getDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
+
 document.addEventListener('DOMContentLoaded', () => {
     const loginForm = document.getElementById('adminLoginForm');
     const emailInput = document.getElementById('email');
@@ -13,9 +17,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const password = passwordInput.value;
 
         try {
-            const userCredential = await auth.signInWithEmailAndPassword(email, password);
+            const userCredential = await signInWithEmailAndPassword(auth, email, password);
             const user = userCredential.user;
-
             await checkUserRoleAndRedirect(user);
         } catch (error) {
             console.error("Login Error:", error);
@@ -23,27 +26,26 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-
     googleSignInBtn.addEventListener('click', async () => {
-        errorMessage.textContent = ''; 
-        const provider = new firebase.auth.GoogleAuthProvider();
+        errorMessage.textContent = '';
+        const provider = new GoogleAuthProvider();
 
         try {
-            const userCredential = await auth.signInWithPopup(provider);
+            const userCredential = await signInWithPopup(auth, provider);
             const user = userCredential.user;
 
+            const usersCollectionRef = collection(db, 'users');
+            const userDocRef = doc(usersCollectionRef, user.uid);
+            const userDocSnap = await getDoc(userDocRef);
 
-            const userDoc = await db.collection('users').doc(user.uid).get();
-            if (!userDoc.exists) {
-                await db.collection('users').doc(user.uid).set({
+            if (!userDocSnap.exists()) {
+                await setDoc(userDocRef, {
                     email: user.email,
                     role: 'customer',
-                    createdAt: firebase.firestore.FieldValue.serverTimestamp()
+                    createdAt: serverTimestamp()
                 });
             }
-
             await checkUserRoleAndRedirect(user);
-
         } catch (error) {
             console.error("Google Sign-In Error:", error);
             handleLoginError(error);
@@ -51,11 +53,14 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     async function checkUserRoleAndRedirect(user) {
-        const userDoc = await db.collection('users').doc(user.uid).get();
-        if (userDoc.exists && userDoc.data().role === 'admin') {
+        const usersCollectionRef = collection(db, 'users');
+        const userDocRef = doc(usersCollectionRef, user.uid);
+        const userDocSnap = await getDoc(userDocRef);
+
+        if (userDocSnap.exists() && userDocSnap.data().role === 'admin') {
             window.location.href = 'dashboard.html';
         } else {
-            await auth.signOut();
+            await signOut(auth);
             errorMessage.textContent = 'Access Denied: You do not have admin privileges.';
         }
     }

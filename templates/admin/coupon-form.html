@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Coupon Form - Admin</title>
+    <link rel="stylesheet" href="../../static/css/admin-dashboard.css" />
+    <link rel="stylesheet" href="../../static/css/coupons.css" />
+  </head>
+  <body>
+    <div class="sidebar">
+      <div class="sidebar-header">
+        <h3>Admin Panel</h3>
+        <p id="adminUserName" class="admin-user-name"></p>
+      </div>
+      <ul class="sidebar-menu">
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="orders.html">Orders</a></li>
+        <li><a href="users.html">Users</a></li>
+        <li><a href="coupons.html" class="active">Coupons</a></li>
+        <li class="sidebar-footer-item">
+          <button
+            id="themeToggleBtn"
+            class="action-btn secondary-btn sidebar-btn"
+          >
+            Toggle Dark Mode
+          </button>
+        </li>
+        <li><a href="#" id="logoutBtn">Logout</a></li>
+      </ul>
+    </div>
+    <div class="main-content">
+      <div class="form-container">
+        <h1 id="formTitle">Add New Coupon</h1>
+        <form id="couponForm">
+          <input type="hidden" id="couponId" />
+
+          <div class="form-group">
+            <label for="couponCode">Coupon Code:</label>
+            <input type="text" id="couponCode" required />
+          </div>
+
+          <div class="form-group">
+            <label for="couponType">Discount Type:</label>
+            <select id="couponType" required>
+              <option value="percentage">Percentage (%)</option>
+              <option value="fixed">Fixed Amount (VND)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="couponValue">Discount Value:</label>
+            <input type="number" id="couponValue" step="0.01" required />
+          </div>
+
+          <div class="form-group">
+            <label for="minimumOrderAmount">Minimum Order Amount (VND):</label>
+            <input type="number" id="minimumOrderAmount" step="1000" />
+          </div>
+
+          <div class="form-group">
+            <label for="maxUses">Max Uses (0 for unlimited):</label>
+            <input type="number" id="maxUses" min="0" />
+          </div>
+
+          <div class="form-group">
+            <label for="validFrom">Valid From (YYYY-MM-DD):</label>
+            <input type="date" id="validFrom" />
+          </div>
+
+          <div class="form-group">
+            <label for="validUntil">Valid Until (YYYY-MM-DD):</label>
+            <input type="date" id="validUntil" />
+          </div>
+
+          <div class="form-group">
+            <input type="checkbox" id="isActive" />
+            <label
+              for="isActive"
+              style="display: inline-block; margin-left: 10px"
+              >Is Active</label
+            >
+          </div>
+
+          <div class="form-actions">
+            <button
+              type="submit"
+              id="saveCouponBtn"
+              class="action-btn primary-btn"
+            >
+              Save Coupon
+            </button>
+            <a href="coupons.html" class="action-btn secondary-btn">Cancel</a>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script type="module" src="../../static/js/firebase-init.js"></script>
+    <script type="module" src="../../static/js/admin-auth-check.js"></script>
+    <script type="module" src="../../static/js/coupon-management.js"></script>
+    <script type="module" src="../../static/js/coupon-form.js"></script>
+  </body>
+</html>

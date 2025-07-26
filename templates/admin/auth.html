@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Admin Login - Your E-commerce</title>
     <link rel="stylesheet" href="../../static/css/admin-auth.css" />
+    <link rel="stylesheet" href="../../static/css/admin-dashboard.css" />
   </head>
   <body>
     <div class="login-container">
@@ -23,6 +24,7 @@
       </form>
 
       <div class="divider">OR</div>
+
       <button id="googleSignInBtn" class="google-btn">
         <img
           src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg"
@@ -32,25 +34,8 @@
       </button>
     </div>
 
-    <script src="https://www.gstatic.com/firebasejs/12.0.0/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/12.0.0/firebase-auth-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore-compat.js"></script>
-
-    <script>
-      const firebaseConfig = {
-        apiKey: "AIzaSyDhRhLAvh22RAYh_6rELSYHMd2AaY51Ruw",
-        authDomain: "project-teaching-89801.firebaseapp.com",
-        projectId: "project-teaching-89801",
-        storageBucket: "project-teaching-89801.firebasestorage.app",
-        messagingSenderId: "441282021443",
-        appId: "1:441282021443:web:223ef629568b9b6e39acf6",
-        measurementId: "G-KB0ZT3GR3K",
-      };
-
-      const app = firebase.initializeApp(firebaseConfig);
-      const auth = firebase.auth();
-      const db = firebase.firestore();
-    </script>
-    <script src="../../static/js/admin-auth.js"></script>
+    <script type="module" src="../../static/js/firebase-init.js"></script>
+    <script type="module" src="../../static/js/admin-auth.js"></script>
+    <script type="module" src="../../static/js/admin-auth-check.js"></script>
   </body>
 </html>

@@ -1,174 +1,25 @@
-/* General Product List Styling (adjusting for table context) */
-.product-list-section {
-    margin-top: 30px;
-}
-
-/* Table specific styles */
-.table-responsive {
-    overflow-x: auto; /* Makes table scrollable on small screens */
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
-    background-color: #ffffff;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-}
-
-.data-table {
-    width: 100%;
-    border-collapse: collapse; /* Remove space between cells */
-    min-width: 700px; /* Ensure table doesn't get too narrow */
-}
-
-.data-table th, .data-table td {
-    padding: 12px 15px;
-    text-align: left;
-    border-bottom: 1px solid #f0f0f0; /* Light border between rows */
-}
-
-.data-table th {
-    background-color: #f8f8f8;
-    color: #333;
-    font-weight: bold;
-    text-transform: uppercase;
-    font-size: 0.9em;
-}
-
-.data-table tbody tr:last-child td {
-    border-bottom: none; /* No border for the last row */
-}
-
-.data-table tbody tr:hover {
-    background-color: #f5f5f5; /* Highlight row on hover */
+.data-table td:nth-child(1) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .table-product-image {
-    width: 60px;
-    height: 60px;
-    object-fit: contain; /* Ensures image fits without cropping */
-    border-radius: 4px;
-    background-color: #f8f8f8;
-    padding: 2px;
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  padding: 2px;
+  border: 1px solid #eee;
+}
+.data-table td:nth-child(6) {
+  text-align: center;
 }
 
-/* Action buttons within table cells */
 .data-table .action-btn {
-    padding: 6px 10px;
-    font-size: 0.85em;
-    margin: 0 3px;
-    white-space: nowrap; /* Prevent buttons from wrapping */
-}
-
-/* Modal (Popup) Styles (giữ nguyên, nhưng có thể điều chỉnh nhẹ) */
-.modal {
-    display: none; /* Hidden by default */
-    position: fixed;
-    z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0,0,0,0.6);
-    display: flex; /* Use flex to center the modal */
-    justify-content: center;
-    align-items: center;
-}
-
-.modal-content {
-    background-color: #fefefe;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-    width: 90%;
-    max-width: 600px;
-    position: relative;
-    animation: fadeIn 0.3s ease-out;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-.close-button {
-    color: #aaa;
-    float: right;
-    font-size: 36px;
-    font-weight: bold;
-    position: absolute;
-    top: 10px;
-    right: 20px;
-    cursor: pointer;
-    transition: color 0.2s;
-}
-
-.close-button:hover,
-.close-button:focus {
-    color: #333;
-    text-decoration: none;
-}
-
-#modalTitle {
-    color: #333;
-    margin-bottom: 25px;
-    text-align: center;
-    font-size: 2em;
-}
-
-/* Form Group in Modal */
-.form-group {
-    margin-bottom: 18px;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: bold;
-    color: #555;
-}
-
-.form-group input[type="text"],
-.form-group input[type="number"],
-.form-group textarea {
-    width: calc(100% - 20px);
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-size: 1em;
-    box-sizing: border-box;
-}
-
-.form-group input[type="file"] {
-    width: 100%;
-    padding: 8px 0;
-}
-
-.product-image-preview {
-    display: none;
-    max-width: 120px;
-    max-height: 120px;
-    margin-top: 10px;
-    border: 1px solid #eee;
-    border-radius: 5px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-    object-fit: cover;
-}
-
-/* Buttons inside modal form */
-.modal-content button {
-    margin-top: 20px;
-    width: auto;
-    padding: 10px 25px;
-    font-size: 1.1em;
-}
-
-/* General button styles for the page header */
-.header-add-btn { /* Changed class name for clarity */
-    padding: 12px 25px;
-    font-size: 1.1em;
-    float: right;
-    margin-top: -5px;
-}
-.main-content header h1 {
-    display: inline-block;
-    margin-right: 20px;
+  margin: 5px;
+  padding: 8px 14px;
+  font-size: 0.9em;
+  border-radius: 6px;
 }
