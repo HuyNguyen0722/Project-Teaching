@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MindXFarm Admin - Quản Lý Sản Phẩm</title>
+  <link rel="stylesheet" href="../assets/css/_base.css" />
+  <link rel="stylesheet" href="../assets/css/_layout.css" />
+  <link rel="stylesheet" href="../assets/css/_components.css" />
+  <link rel="stylesheet" href="../assets/css/_pages.css" />
+  <link rel="stylesheet" href="../assets/css/_dark-mode.css" />
+  <link rel="stylesheet" href="../assets/css/_responsive.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+  <div class="admin-wrapper">
+    <aside class="sidebar">
+      <div class="logo">
+        <a href="index.html"><i class="fas fa-seedling"></i> Mind<span class="logo-x">X</span><span
+            class="logo-farm">Farm</span></a>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="index.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+          <li><a href="products.html" class="active"><i class="fas fa-boxes"></i> Sản Phẩm</a></li>
+          <li><a href="orders.html"><i class="fas fa-clipboard-list"></i> Đơn Hàng</a></li>
+          <li><a href="categories.html"><i class="fas fa-tags"></i> Danh Mục</a></li>
+          <li><a href="users.html"><i class="fas fa-users"></i> Người Dùng</a></li>
+          <li><a href="#" id="adminLogoutBtn"><i class="fas fa-sign-out-alt"></i> Đăng Xuất</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main class="admin-content">
+      <header class="admin-header">
+        <h2>Quản Lý Sản Phẩm</h2>
+        <div class="user-info">
+          <span><i class="fas fa-user-circle"></i> Xin chào, <span id="adminNameDisplay">Admin</span>!</span>
+          <button id="darkModeToggle" class="btn-icon"><i class="fas fa-moon"></i></button>
+        </div>
+      </header>
+
+      <section class="product-management">
+        <div class="actions-bar">
+          <button class="btn btn-primary" id="addProductBtn"><i class="fas fa-plus-circle"></i> Thêm Sản Phẩm
+            Mới</button>
+          <div class="search-bar">
+            <input type="text" placeholder="Tìm kiếm sản phẩm...">
+            <button class="btn btn-search"><i class="fas fa-search"></i></button>
+          </div>
+        </div>
+
+        <div class="product-list-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Ảnh</th>
+                <th>Tên Sản Phẩm</th>
+                <th>Giá</th>
+                <th>Số Lượng</th>
+                <th>Danh Mục</th>
+                <th>Trạng Thái</th>
+                <th>Hành Động</th>
+              </tr>
+            </thead>
+            <tbody id="productList">
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div id="productModal" class="modal">
+    <div class="modal-content">
+      <span class="close-button">&times;</span>
+      <h3 id="modalTitle">Thêm Sản Phẩm Mới</h3>
+      <form id="productForm">
+        <input type="hidden" id="productId">
+        <div class="form-group">
+          <label for="productName">Tên Sản Phẩm</label>
+          <input type="text" id="productName" required>
+        </div>
+        <div class="form-group">
+          <label for="productPrice">Giá (VNĐ)</label>
+          <input type="number" id="productPrice" min="0" required>
+        </div>
+        <div class="form-group">
+          <label for="productQuantity">Số Lượng</label>
+          <input type="number" id="productQuantity" min="0" required>
+        </div>
+        <div class="form-group">
+          <label for="productCategory">Danh Mục</label>
+          <select id="productCategory" required>
+            <option value="">Chọn danh mục</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="productShortDescription">Mô tả ngắn:</label>
+          <textarea id="productShortDescription" rows="2" placeholder="Mô tả ngắn gọn về sản phẩm"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="productOrigin">Nguồn gốc:</label>
+          <input type="text" id="productOrigin" placeholder="Ví dụ: Đà Lạt, Hải Phòng">
+        </div>
+        <div class="form-group form-check">
+          <input type="checkbox" id="productIsFeatured">
+          <label for="productIsFeatured">Sản phẩm nổi bật</label>
+        </div>
+        <div class="form-group">
+          <label for="productImageUrlInput">URL Ảnh Sản Phẩm</label>
+          <input type="text" id="productImageUrlInput" placeholder="Dán URL ảnh vào đây">
+          <img id="currentProductImage" src="" alt="Ảnh hiện tại"
+            style="max-width: 100px; max-height: 100px; margin-top: 10px; display: none;">
+        </div>
+        <div class="form-group">
+          <label for="productDescription">Mô Tả</label>
+          <textarea id="productDescription" rows="4"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Lưu Sản Phẩm</button>
+      </form>
+    </div>
+  </div>
+
+  <script type="module" src="../assets/js/main.js"></script>
+</body>
+
+</html>

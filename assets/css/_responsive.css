@@ -1,0 +1,173 @@
+@media (max-width: 768px) {
+    .admin-wrapper {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        padding: 15px 0;
+        text-align: center;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .sidebar nav ul {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-top: 15px;
+    }
+
+    .sidebar nav ul li {
+        margin: 5px 10px;
+    }
+
+    .admin-content {
+        padding: 20px;
+    }
+
+    .admin-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .admin-header .user-info {
+        margin-top: 15px;
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    .product-management .actions-bar,
+    .order-management .actions-bar,
+    .category-management .actions-bar,
+    .user-management .actions-bar {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .search-bar {
+        width: 100%;
+    }
+
+    .search-bar input {
+        width: 100%;
+        border-radius: 5px;
+    }
+
+    .search-bar .btn-search {
+        display: flex;
+    }
+
+    .order-management .filter-status {
+        width: 100%;
+        margin-bottom: 15px;
+    }
+
+    .order-management .filter-status select {
+        width: 100%;
+    }
+
+    .order-management .filter-status::after {
+        right: 10px;
+    }
+
+    .product-list-container table,
+    .order-list-container table,
+    .category-list-container table,
+    .user-list-container table {
+        min-width: unset;
+        width: 100%;
+    }
+
+    .order-list-container td button,
+    .order-list-container td .action-dropdown-wrapper,
+    .product-list-container td button,
+    .category-list-container td button,
+    .user-list-container td button {
+        margin-bottom: 5px;
+        width: 100%;
+        display: block;
+    }
+
+    .order-list-container td .order-action-dropdown {
+        width: 100%;
+    }
+
+    .admin-login-container {
+        margin: 20px;
+        padding: 30px 20px;
+    }
+
+    .admin-login-container h2 {
+        font-size: 1.5rem;
+    }
+
+    .dashboard-stats {
+        grid-template-columns: 1fr;
+    }
+
+    .dashboard-stats .wide-card {
+        grid-column: 1 / -1;
+    }
+
+    .modal-content {
+        width: 95%;
+        margin: 20px auto;
+        padding: 20px;
+    }
+
+    .user-list-container table {
+        min-width: unset;
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    .user-list-container thead,
+    .user-list-container tbody,
+    .user-list-container th,
+    .user-list-container td,
+    .user-list-container tr {
+        display: block;
+    }
+
+    .user-list-container thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+
+    .user-list-container tr {
+        border: 1px solid #ccc;
+        margin-bottom: 15px;
+        border-radius: 8px;
+        padding: 10px;
+    }
+
+    .user-list-container td {
+        border: none;
+        position: relative;
+        padding-left: 50%;
+        text-align: right;
+    }
+
+    .user-list-container td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 10px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+        text-align: left;
+        font-weight: bold;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1200px) {
+    .dashboard-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .dashboard-stats .wide-card {
+        grid-column: 1 / -1;
+    }
+}

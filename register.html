@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MindXFarm - Đăng Ký</title>
+    <link rel="stylesheet" href="assets/css/user-base.css" />
+    <link rel="stylesheet" href="assets/css/user-layout.css" />
+    <link rel="stylesheet" href="assets/css/user-components.css" />
+    <link rel="stylesheet" href="assets/css/user-pages.css" />
+    <link rel="stylesheet" href="assets/css/user-responsive.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html"><i class="fas fa-leaf"></i> MindXFarm</a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Trang Chủ</a></li>
+                    <li><a href="store.html">Sản Phẩm</a></li>
+                    <li><a href="#">Giới Thiệu</a></li>
+                    <li><a href="#">Liên Hệ</a></li>
+                </ul>
+            </nav>
+            <div class="user-actions">
+                <a href="login.html">Đăng Nhập</a>
+                <a href="cart.html"><i class="fas fa-shopping-cart"></i> Giỏ Hàng (<span
+                        id="cartItemCount">0</span>)</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container auth-page-container">
+            <h1>Đăng Ký Tài Khoản Mới</h1>
+            <form id="userRegisterForm" class="auth-form">
+                <div class="form-group">
+                    <label for="regEmail">Email</label>
+                    <input type="email" id="regEmail" required placeholder="email@example.com" />
+                </div>
+                <div class="form-group">
+                    <label for="regDisplayName">Tên hiển thị</label>
+                    <input type="text" id="regDisplayName" placeholder="Tên của bạn" />
+                </div>
+                <div class="form-group">
+                    <label for="regPhone">Số điện thoại</label>
+                    <input type="tel" id="regPhone" placeholder="09xxxxxxxx" />
+                </div>
+                <div class="form-group">
+                    <label for="regAddress">Địa chỉ</label>
+                    <input type="text" id="regAddress" placeholder="Địa chỉ của bạn" />
+                </div>
+                <div class="form-group">
+                    <label for="regPassword">Mật khẩu</label>
+                    <input type="password" id="regPassword" required placeholder="Tối thiểu 6 ký tự" />
+                </div>
+                <div class="form-group">
+                    <label for="regConfirmPassword">Xác nhận mật khẩu</label>
+                    <input type="password" id="regConfirmPassword" required placeholder="Nhập lại mật khẩu" />
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">
+                    Đăng Ký
+                </button>
+                <div id="userRegisterMessage" class="message"></div>
+                <p class="auth-switch-text">
+                    Đã có tài khoản? <a href="login.html">Đăng nhập ngay</a>
+                </p>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-section about-us">
+                <h4>Về MindXFarm</h4>
+                <p>
+                    MindXFarm mang đến rau củ quả tươi sạch, hữu cơ từ nông trại đến bàn ăn
+                    của bạn. Chúng tôi cam kết chất lượng, an toàn và bền vững.
+                </p>
+            </div>
+
+            <div class="footer-section quick-links">
+                <h4>Liên kết nhanh</h4>
+                <ul>
+                    <li><a href="index.html">Trang Chủ</a></li>
+                    <li><a href="store.html">Sản Phẩm</a></li>
+                    <li><a href="#">Giới Thiệu</a></li>
+                    <li><a href="#">Liên Hệ</a></li>
+                    <li><a href="#">Chính sách đổi trả</a></li>
+                    <li><a href="#">Chính sách bảo mật</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section contact-info">
+                <h4>Liên hệ</h4>
+                <p><i class="fas fa-map-marker-alt"></i> Tòa nhà Bạch Đằng, 268 Trần Nguyên Hãn</p>
+                <p><i class="fas fa-phone-alt"></i> 1900 6868</p>
+                <p><i class="fas fa-envelope"></i> support@mindxfarm.com</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 MindXFarm. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script type="module" src="assets/js/user-main.js"></script>
+</body>
+
+</html>

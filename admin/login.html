@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MindXFarm Admin - Đăng Nhập</title>
+  <link rel="stylesheet" href="../assets/css/_base.css" />
+  <link rel="stylesheet" href="../assets/css/_layout.css" />
+  <link rel="stylesheet" href="../assets/css/_components.css" />
+  <link rel="stylesheet" href="../assets/css/_auth.css" />
+  <link rel="stylesheet" href="../assets/css/_dark-mode.css" />
+  <link rel="stylesheet" href="../assets/css/_responsive.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+</head>
+
+<body>
+  <div class="admin-login-wrapper">
+    <div class="admin-login-container">
+      <div class="logo">
+        <i class="fas fa-seedling"></i> Mind<span class="logo-x">X</span><span class="logo-farm">Farm</span>
+      </div>
+      <h2>Đăng Nhập Quản Trị Viên</h2>
+      <form id="adminLoginForm">
+        <div class="form-group">
+          <label for="adminEmail">Email</label>
+          <input type="email" id="adminEmail" placeholder="Nhập email" required />
+        </div>
+        <div class="form-group">
+          <label for="adminPassword">Mật khẩu</label>
+          <input type="password" id="adminPassword" placeholder="Nhập mật khẩu" required />
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">
+          Đăng Nhập
+        </button>
+        <div id="adminLoginMessage" class="message"></div>
+      </form>
+    </div>
+  </div>
+
+  <script type="module" src="../assets/js/main.js"></script>
+
+</body>
+
+</html>

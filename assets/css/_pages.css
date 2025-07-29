@@ -1,0 +1,279 @@
+/* assets/css/_pages.css */
+
+/* Các biến CSS cho màu sắc biểu đồ và text để dễ dàng quản lý Dark Mode */
+:root {
+    --chart-grid-color: rgba(200, 200, 200, 0.2);
+    --text-color-primary: #333;
+    --text-color-secondary: #555;
+    --background-color: #f0f2f5;
+    /* Mặc định cho body */
+}
+
+body.dark-mode {
+    /* Các thuộc tính dark-mode khác từ _dark-mode.css (hoặc nếu bạn gộp vào đây) */
+    --chart-grid-color: rgba(100, 100, 100, 0.3);
+    /* Màu lưới tối hơn trong dark mode */
+    --text-color-primary: #e2e8f0;
+    --text-color-secondary: #a0aec0;
+    --background-color: #1a202c;
+    /* Màu nền cho dark mode */
+}
+
+/* Kiểu dáng chung cho các phần quản lý (sản phẩm, đơn hàng, danh mục, người dùng) */
+.product-list-container table,
+.order-list-container table,
+.category-list-container table,
+.user-list-container table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.product-list-container th,
+.product-list-container td,
+.order-list-container th,
+.order-list-container td,
+.category-list-container th,
+.category-list-container td,
+.user-list-container th,
+.user-list-container td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+    vertical-align: middle;
+    transition: border-bottom-color 0.3s ease;
+}
+
+.product-list-container th,
+.order-list-container th,
+.category-list-container th,
+.user-list-container th {
+    background-color: #f8f8f8;
+    color: var(--text-color-secondary);
+    /* Sử dụng biến CSS */
+    font-weight: 600;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.product-list-container tr:nth-child(even),
+.order-list-container tr:nth-child(even),
+.category-list-container tr:nth-child(even),
+.user-list-container tr:nth-child(even) {
+    background-color: #fcfcfc;
+    transition: background-color 0.3s ease;
+}
+
+.product-list-container tr:hover,
+.order-list-container tr:hover,
+.category-list-container tr:hover,
+.user-list-container tr:hover {
+    background-color: #f2f2f2;
+    transition: background-color 0.3s ease;
+}
+
+.product-management,
+.order-management,
+.category-management,
+.user-management {
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    margin-top: 30px;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-management .actions-bar,
+.order-management .actions-bar,
+.category-management .actions-bar,
+.user-management .actions-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.product-list-container,
+.order-list-container,
+.category-list-container,
+.user-list-container {
+    overflow-x: auto;
+}
+
+.product-list-container table {
+    min-width: 700px;
+}
+
+.order-list-container table {
+    min-width: 800px;
+}
+
+.category-list-container table {
+    min-width: 600px;
+}
+
+.user-list-container table {
+    min-width: 900px;
+    text-align: left;
+}
+
+/* User management specific adjustments for actions bar if different */
+.user-management .actions-bar {
+    justify-content: flex-end;
+    /* Only search bar and add user button */
+}
+
+
+/* --- Dashboard Specific Styles --- */
+.dashboard-charts {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    margin-bottom: 40px;
+}
+
+.chart-card {
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    height: 400px;
+    /* **QUAN TRỌNG:** Đặt một chiều cao cố định cho container */
+    position: relative;
+    /* **QUAN TRỌNG:** Để canvas bên trong có thể chiếm 100% chiều cao */
+    overflow: hidden;
+    /* **QUAN TRỌNG:** Cắt bỏ bất kỳ nội dung thừa nào */
+    display: flex;
+    /* Sử dụng flexbox để căn chỉnh nội dung */
+    flex-direction: column;
+    /* Xếp các mục con theo cột */
+    justify-content: space-between;
+    /* Đẩy tiêu đề lên trên, biểu đồ xuống dưới */
+    align-items: center;
+    /* Căn giữa theo chiều ngang */
+}
+
+.chart-card h3 {
+    font-size: 1.3rem;
+    color: var(--text-color-primary);
+    /* Sử dụng biến CSS */
+    margin-bottom: 20px;
+    text-align: center;
+    transition: color 0.3s ease;
+}
+
+.chart-card canvas {
+    flex-grow: 1;
+    /* Biểu đồ sẽ chiếm không gian còn lại */
+    max-height: 100%;
+    /* **QUAN TRỌNG:** Đảm bảo chiều cao tối đa bằng phần tử cha */
+    width: 100% !important;
+    /* **QUAN TRỌNG:** Buộc chiều rộng 100% và ghi đè nếu có style inline */
+    height: 100% !important;
+    /* **QUAN TRỌNG:** Buộc chiều cao 100% và ghi đè nếu có style inline */
+}
+
+.no-chart-data {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--text-color-secondary);
+    font-size: 1.1rem;
+    text-align: center;
+    padding: 10px;
+    background-color: var(--background-color);
+    border-radius: 5px;
+    z-index: 1;
+    /* Đảm bảo nó nằm trên canvas */
+}
+
+
+.latest-orders {
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    margin-top: 30px;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.latest-orders h3 {
+    font-size: 1.5rem;
+    color: var(--text-color-primary);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: color 0.3s ease;
+}
+
+/* Điều chỉnh bảng cho phần latest-orders */
+.latest-orders .order-list-container table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.latest-orders .order-list-container th,
+.latest-orders .order-list-container td {
+    padding: 10px 15px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+    vertical-align: middle;
+    transition: border-bottom-color 0.3s ease;
+}
+
+.latest-orders .order-list-container th {
+    background-color: #f8f8f8;
+    color: var(--text-color-secondary);
+    font-weight: 600;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.latest-orders .order-list-container tr:nth-child(even) {
+    background-color: #fcfcfc;
+    transition: background-color 0.3s ease;
+}
+
+.latest-orders .order-list-container tr:hover {
+    background-color: #f2f2f2;
+    transition: background-color 0.3s ease;
+}
+
+
+/* Dark Mode adjustments for new dashboard elements */
+body.dark-mode .dashboard-charts .chart-card,
+body.dark-mode .latest-orders {
+    background-color: #2d3748;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+body.dark-mode .chart-card h3,
+body.dark-mode .latest-orders h3 {
+    color: #e2e8f0;
+}
+
+body.dark-mode .latest-orders .order-list-container th {
+    background-color: #4a5568;
+    color: #cbd5e0;
+}
+
+body.dark-mode .latest-orders .order-list-container td {
+    border-bottom-color: #4a5568;
+}
+
+body.dark-mode .latest-orders .order-list-container tr:nth-child(even) {
+    background-color: #2d3748;
+}
+
+body.dark-mode .latest-orders .order-list-container tr:hover {
+    background-color: #4a5568;
+}
+
+@media (max-width: 768px) {
+    .dashboard-charts {
+        grid-template-columns: 1fr;
+    }
+}

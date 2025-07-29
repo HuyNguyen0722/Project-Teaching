@@ -1,0 +1,121 @@
+.admin-login-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #e0e6ed;
+    transition: background-color 0.3s ease;
+}
+
+.admin-login-container {
+    background-color: #fff;
+    padding: 40px 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.admin-login-container .logo {
+    margin-bottom: 25px;
+    font-size: 2.2rem;
+    font-weight: bold;
+    color: #2c3e50;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.admin-login-container .logo i {
+    margin-right: 10px;
+    color: #4caf50;
+}
+
+.admin-login-container .logo .logo-x {
+    color: #e74c3c;
+}
+
+.admin-login-container .logo .logo-farm {
+    color: #27ae60;
+}
+
+.admin-login-container h2 {
+    font-size: 1.8rem;
+    color: #333;
+    margin-bottom: 30px;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.admin-login-container .form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.admin-login-container .form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #555;
+    transition: color 0.3s ease;
+}
+
+.admin-login-container .form-group input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease,
+        background-color 0.3s ease, color 0.3s ease;
+    background-color: #fff;
+    color: #333;
+}
+
+.admin-login-container .form-group input:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+    outline: none;
+}
+
+.admin-login-container .btn-primary.btn-block {
+    width: 100%;
+    padding: 12px 20px;
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 15px;
+    justify-content: center;
+}
+
+.admin-login-container .btn-primary.btn-block:hover {
+    background-color: #45a049;
+}
+
+.admin-login-container .message {
+    margin-top: 20px;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 0.95rem;
+    text-align: center;
+    transition: background-color 0.3s ease, color 0.3s ease,
+        border-color 0.3s ease;
+}
+
+.admin-login-container .message.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+.admin-login-container .message.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}

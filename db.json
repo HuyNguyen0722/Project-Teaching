@@ -1,0 +1,557 @@
+{
+  "products": [
+    {
+      "id": "1",
+      "name": "Cà chua",
+      "price": 25000,
+      "quantity": 100,
+      "category": "Rau củ",
+      "description": "Mô tả cà chua",
+      "imageUrl": "https://bizweb.dktcdn.net/thumb/1024x1024/100/390/808/products/unnamed-ebae78a3-bd34-4d69-b559-464ba532e2a2.jpg?v=1592641134503",
+      "shortDescription": "Cà chua tươi ngon",
+      "origin": "Đà Lạt",
+      "isFeatured": false,
+      "unit": "kg"
+    },
+    {
+      "id": "2",
+      "name": "Cam Sành Hữu Cơ",
+      "price": 75000,
+      "quantity": 80,
+      "category": "Trái cây",
+      "description": "Cam Sành Hữu Cơ có vị ngọt thanh, giàu vitamin C và chất xơ. Sản phẩm được trồng theo quy trình hữu cơ nghiêm ngặt, đảm bảo không sử dụng hóa chất độc hại, an toàn cho sức khỏe người tiêu dùng. Cam được thu hoạch khi đạt độ chín tối ưu, giữ trọn hương vị tự nhiên và dưỡng chất.",
+      "imageUrl": "https://bizweb.dktcdn.net/thumb/1024x1024/100/390/808/products/unnamed-2.jpg?v=1592642521770",
+      "shortDescription": "Cam Sành hữu cơ tươi ngon, ngọt thanh, giàu vitamin C. An toàn, không hóa chất.",
+      "origin": "Miền Tây, Việt Nam",
+      "isFeatured": true,
+      "unit": "kg"
+    },
+    {
+      "id": "3",
+      "name": "Cải Ngồng Hữu Cơ",
+      "price": 35000,
+      "quantity": 120,
+      "category": "Rau củ",
+      "description": "Cải ngồng hữu cơ tươi xanh, giòn ngọt, được trồng và chăm sóc theo tiêu chuẩn nông nghiệp hữu cơ. Không sử dụng thuốc trừ sâu, phân bón hóa học. Rất tốt cho sức khỏe và dễ chế biến thành nhiều món ăn ngon.",
+      "imageUrl": "https://bizweb.dktcdn.net/thumb/1024x1024/100/390/808/products/cai-ngong-171-1487770270.jpg?v=1592815118587",
+      "shortDescription": "Cải ngồng hữu cơ tươi xanh, giòn ngọt, giàu dinh dưỡng.",
+      "origin": "Đà Lạt",
+      "isFeatured": false,
+      "unit": "bó"
+    },
+    {
+      "id": "4",
+      "name": "Trứng Gà Ta Hữu Cơ (10 quả)",
+      "price": 60000,
+      "quantity": 50,
+      "category": "Trứng - Sữa",
+      "description": "Trứng gà ta hữu cơ được thu hoạch từ đàn gà nuôi thả vườn tự nhiên, không sử dụng thức ăn công nghiệp, kháng sinh hay hormone tăng trưởng. Trứng có lòng đỏ đậm, thơm ngon và giàu dinh dưỡng, đảm bảo chất lượng và an toàn vệ sinh thực phẩm.",
+      "imageUrl": "https://bizweb.dktcdn.net/thumb/large/100/390/808/products/7dc26e6782aedbf8f16f9d8d0e316f87.jpg?v=1604733176453",
+      "shortDescription": "Trứng gà ta hữu cơ tươi, bổ dưỡng, từ gà nuôi thả vườn.",
+      "origin": "Bình Dương",
+      "isFeatured": true,
+      "unit": "vỉ"
+    },
+    {
+      "id": "5",
+      "name": "Gạo Lứt Đỏ Hữu Cơ (1kg)",
+      "price": 45000,
+      "quantity": 90,
+      "category": "Gạo - Đậu",
+      "description": "Gạo lứt đỏ hữu cơ được trồng trên vùng đất màu mỡ, không sử dụng thuốc bảo vệ thực vật và phân bón hóa học. Hạt gạo giữ nguyên lớp cám giàu dinh dưỡng, cung cấp nhiều vitamin, khoáng chất và chất xơ, tốt cho người ăn kiêng, tiểu đường.",
+      "imageUrl": "https://bizweb.dktcdn.net/thumb/1024x1024/100/390/808/products/st24-59d79784-c269-4506-855c-c7c36a08c74f.jpg?v=1728014616130",
+      "shortDescription": "Gạo lứt đỏ hữu cơ nguyên cám, giàu dinh dưỡng, tốt cho sức khỏe.",
+      "origin": "Sóc Trăng",
+      "isFeatured": false,
+      "unit": "gói"
+    },
+    {
+      "id": "6",
+      "name": "Bưởi Da Xanh Hữu Cơ",
+      "price": 95000,
+      "quantity": 40,
+      "category": "Trái cây",
+      "description": "Bưởi Da Xanh hữu cơ nổi tiếng với múi bưởi hồng tươi, mọng nước, vị ngọt thanh mát đặc trưng. Được trồng theo phương pháp hữu cơ bền vững, không hóa chất, đảm bảo an toàn tuyệt đối và hương vị tự nhiên nhất.",
+      "imageUrl": "https://down-vn.img.susercontent.com/file/vn-11134207-7ra0g-m6bfhitkol4zdd@resize_w450_nl.webp",
+      "shortDescription": "Bưởi Da Xanh hữu cơ mọng nước, ngọt mát, an toàn tự nhiên.",
+      "origin": "Bến Tre",
+      "isFeatured": true,
+      "unit": "quả"
+    },
+    {
+      "id": "7",
+      "name": "Thịt Bò Thăn Hữu Cơ",
+      "price": 280000,
+      "quantity": 25,
+      "category": "Thịt - Hải sản",
+      "description": "Thịt bò thăn hữu cơ được lấy từ những con bò được chăn nuôi tự nhiên, không hormone, không kháng sinh. Thịt mềm, ngọt tự nhiên, giàu protein, lý tưởng cho các món nướng hoặc xào.",
+      "imageUrl": "https://bizweb.dktcdn.net/thumb/1024x1024/100/390/808/products/bo-mem.jpg?v=1704956641723",
+      "shortDescription": "Thịt bò thăn hữu cơ tươi ngon, mềm ngọt tự nhiên.",
+      "origin": "Đồng Nai",
+      "isFeatured": true,
+      "unit": "kg"
+    },
+    {
+      "id": "8",
+      "name": "Cá Hồi Tươi Nauy",
+      "price": 350000,
+      "quantity": 15,
+      "category": "Thịt - Hải sản",
+      "description": "Cá hồi tươi nhập khẩu từ Nauy, đảm bảo chất lượng và độ tươi ngon. Giàu Omega-3, tốt cho tim mạch và trí não. Phù hợp để chế biến sashimi, áp chảo hoặc nướng.",
+      "imageUrl": "https://down-vn.img.susercontent.com/file/00da026376e3e728966b713a26a4ef9d.webp",
+      "shortDescription": "Cá hồi Nauy tươi, giàu Omega-3, cực kỳ bổ dưỡng.",
+      "origin": "Nauy",
+      "isFeatured": false,
+      "unit": "kg"
+    },
+    {
+      "id": "9",
+      "name": "Dầu Oliu Extra Virgin (500ml)",
+      "price": 185000,
+      "quantity": 70,
+      "category": "Đồ khô - Gia vị",
+      "description": "Dầu Oliu Extra Virgin nguyên chất 100%, được ép lạnh từ những quả oliu tươi ngon. Hương vị thơm nhẹ, thích hợp dùng trực tiếp với salad, làm nước sốt hoặc chế biến các món ăn ở nhiệt độ thấp.",
+      "imageUrl": "https://bizweb.dktcdn.net/thumb/1024x1024/100/390/808/products/dau-oliu-huu-co-ep-lanh-bioitalia-250ml-500x500.jpg?v=1608174442500",
+      "shortDescription": "Dầu Oliu Extra Virgin nguyên chất, tốt cho sức khỏe.",
+      "origin": "Ý",
+      "isFeatured": false,
+      "unit": "chai"
+    },
+    {
+      "id": "10",
+      "name": "Yến Mạch Hữu Cơ (500g)",
+      "price": 80000,
+      "quantity": 110,
+      "category": "Ngũ cốc - Hạt",
+      "description": "Yến mạch hữu cơ nguyên hạt, giàu chất xơ hòa tan, protein và khoáng chất. Là thực phẩm lý tưởng cho bữa sáng, giúp duy trì năng lượng và hỗ trợ tiêu hóa. Thích hợp cho người ăn kiêng và chế độ ăn lành mạnh.",
+      "imageUrl": "https://bizweb.dktcdn.net/thumb/1024x1024/100/390/808/products/yen-mach-can-mong-huu-co-markal-500g-1-052fef376da945888341479130655b57-master.jpg?v=1593490159843",
+      "shortDescription": "Yến mạch hữu cơ nguyên hạt, bổ dưỡng, tiện lợi cho bữa sáng.",
+      "origin": "Úc",
+      "isFeatured": true,
+      "unit": "gói"
+    },
+    {
+      "id": "11",
+      "name": "Mật Ong Rừng Thiên Nhiên (500ml)",
+      "price": 220000,
+      "quantity": 60,
+      "category": "Đồ khô - Gia vị",
+      "description": "Mật ong rừng nguyên chất, được khai thác tự nhiên từ các tổ ong trong rừng sâu. Mật ong có màu vàng óng, vị ngọt đậm đà, hương thơm đặc trưng của hoa rừng. Giàu dưỡng chất, tăng cường sức đề kháng và là nguyên liệu tuyệt vời cho nhiều món ăn, đồ uống.",
+      "imageUrl": "https://homefood.com.vn/_next/image?url=https%3A%2F%2Fcms.homefood.com.vn%2Fapi%2Fmedia-service%2Ffiles%2F3ccdb0c2-4a20-4b41-ab76-dd98df60a363.png&w=1920&q=100",
+      "shortDescription": "Mật ong rừng thiên nhiên, nguyên chất, thơm ngon và bổ dưỡng.",
+      "origin": "Tây Nguyên",
+      "isFeatured": true,
+      "unit": "chai"
+    },
+    {
+      "id": "12",
+      "name": "Nấm Linh Chi Đỏ Hữu Cơ",
+      "price": 450000,
+      "quantity": 30,
+      "category": "Thảo mộc - Nấm",
+      "description": "Nấm Linh Chi Đỏ hữu cơ được trồng và chăm sóc theo phương pháp tự nhiên, không hóa chất. Nổi tiếng với khả năng hỗ trợ tăng cường hệ miễn dịch, cải thiện sức khỏe tổng thể, và giải độc cơ thể. Thường được dùng để sắc nước uống hoặc hãm trà.",
+      "imageUrl": "https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-ltjbp99q5q8d02.webp",
+      "shortDescription": "Nấm Linh Chi Đỏ hữu cơ, tăng cường sức khỏe, giải độc cơ thể.",
+      "origin": "Lâm Đồng",
+      "isFeatured": false,
+      "unit": "gói"
+    },
+    {
+      "id": "13",
+      "name": "Sữa Hạnh Nhân Hữu Cơ (1L)",
+      "price": 90000,
+      "quantity": 45,
+      "category": "Trứng - Sữa",
+      "description": "Sữa hạnh nhân hữu cơ không đường, được làm từ hạt hạnh nhân nguyên chất, không biến đổi gen. Là lựa chọn tuyệt vời cho người ăn chay, người không dung nạp lactose, hoặc đơn giản là muốn thưởng thức một loại sữa thực vật thơm ngon, giàu dinh dưỡng.",
+      "imageUrl": "https://bizweb.dktcdn.net/thumb/1024x1024/100/390/808/products/sua-hanh-nhan-huu-co-ecomil-khong-duong-1l-7e46fbd0f9574fc9a0f043db3fcfbc32.jpg?v=1608176484840",
+      "shortDescription": "Sữa hạnh nhân hữu cơ không đường, thơm ngon, giàu dinh dưỡng.",
+      "origin": "Việt Nam",
+      "isFeatured": false,
+      "unit": "hộp"
+    },
+    {
+      "id": "14",
+      "name": "Bánh Quy Yến Mạch Hữu Cơ",
+      "price": 70000,
+      "quantity": 85,
+      "category": "Thực phẩm chế biến",
+      "description": "Bánh quy yến mạch hữu cơ giòn tan, thơm ngon, làm từ yến mạch nguyên hạt và các nguyên liệu tự nhiên. Không chất bảo quản, không màu nhân tạo. Là món ăn vặt lành mạnh hoặc bổ sung năng lượng nhanh chóng.",
+      "imageUrl": "https://bizweb.dktcdn.net/thumb/1024x1024/100/390/808/products/fb-img-1689059069901.jpg?v=1689059417933",
+      "shortDescription": "Bánh quy yến mạch hữu cơ giòn ngon, lành mạnh, không phụ gia.",
+      "origin": "Việt Nam",
+      "isFeatured": true,
+      "unit": "gói"
+    },
+    {
+      "id": "75e6",
+      "name": "Sữa Hạnh Nhân Hữu Cơ (1L)",
+      "price": 90000,
+      "quantity": 0,
+      "category": "Trứng - Sữa",
+      "shortDescription": "Sữa hạnh nhân hữu cơ không đường, thơm ngon, giàu dinh dưỡng.",
+      "origin": "Việt Nam",
+      "isFeatured": false,
+      "imageUrl": "https://bizweb.dktcdn.net/thumb/1024x1024/100/390/808/products/sua-hanh-nhan-huu-co-ecomil-khong-duong-1l-7e46fbd0f9574fc9a0f043db3fcfbc32.jpg?v=1608176484840",
+      "description": "Sữa hạnh nhân hữu cơ không đường, được làm từ hạt hạnh nhân nguyên chất, không biến đổi gen. Là lựa chọn tuyệt vời cho người ăn chay, người không dung nạp lactose, hoặc đơn giản là muốn thưởng thức một loại sữa thực vật thơm ngon, giàu dinh dưỡng."
+    }
+  ],
+  "orders": [
+    {
+      "id": "order1",
+      "customerName": "Nguyễn Văn A",
+      "totalPrice": 150000,
+      "orderDate": 1701000000000,
+      "status": "pending"
+    },
+    {
+      "id": "order2",
+      "customerName": "Trần Thị B",
+      "totalPrice": 250000,
+      "orderDate": 1701050000000,
+      "status": "delivered"
+    },
+    {
+      "id": "order3",
+      "customerName": "Lê Văn C",
+      "totalPrice": 75000,
+      "orderDate": 1701100000000,
+      "status": "cancelled"
+    },
+    {
+      "id": "order4",
+      "customerName": "Phạm Thị D",
+      "totalPrice": 300000,
+      "orderDate": 1701120000000,
+      "status": "cancelled"
+    },
+    {
+      "id": "order5",
+      "customerName": "Võ Minh E",
+      "totalPrice": 120000,
+      "orderDate": 1701150000000,
+      "status": "cancelled"
+    },
+    {
+      "id": "order6",
+      "customerName": "Hoàng Thị F",
+      "totalPrice": 45000,
+      "orderDate": 1701160000000,
+      "status": "delivered"
+    },
+    {
+      "id": "order7",
+      "customerName": "Nguyễn Quốc G",
+      "totalPrice": 280000,
+      "orderDate": 1701170000000,
+      "status": "pending"
+    },
+    {
+      "id": "order8",
+      "customerName": "Lê Huỳnh H",
+      "totalPrice": 50000,
+      "orderDate": 1703600000000,
+      "status": "delivered"
+    },
+    {
+      "id": "order9",
+      "customerName": "Phạm Gia K",
+      "totalPrice": 180000,
+      "orderDate": 1706200000000,
+      "status": "delivered"
+    },
+    {
+      "id": "order10",
+      "customerName": "Trần Minh L",
+      "totalPrice": 220000,
+      "orderDate": 1706300000000,
+      "status": "pending"
+    },
+    {
+      "id": "order11",
+      "customerName": "Vũ Anh M",
+      "totalPrice": 95000,
+      "orderDate": 1708800000000,
+      "status": "delivered"
+    },
+    {
+      "id": "order12",
+      "customerName": "Đặng Thị N",
+      "totalPrice": 160000,
+      "orderDate": 1708900000000,
+      "status": "shipping"
+    },
+    {
+      "id": "order13",
+      "customerName": "Ngô Bá O",
+      "totalPrice": 110000,
+      "orderDate": 1711400000000,
+      "status": "delivered"
+    },
+    {
+      "id": "order14",
+      "customerName": "Bùi Văn P",
+      "totalPrice": 200000,
+      "orderDate": 1711500000000,
+      "status": "confirmed"
+    },
+    {
+      "id": "order15",
+      "customerName": "Dương Thanh Q",
+      "totalPrice": 85000,
+      "orderDate": 1714000000000,
+      "status": "delivered"
+    },
+    {
+      "id": "order16",
+      "customerName": "Mai Văn R",
+      "totalPrice": 270000,
+      "orderDate": 1714100000000,
+      "status": "pending"
+    },
+    {
+      "id": "order17",
+      "customerName": "Lý Thị S",
+      "totalPrice": 130000,
+      "orderDate": 1716600000000,
+      "status": "delivered"
+    },
+    {
+      "id": "order18",
+      "customerName": "Tô Đình T",
+      "totalPrice": 190000,
+      "orderDate": 1716700000000,
+      "status": "shipping"
+    },
+    {
+      "id": "order19",
+      "customerName": "Phan Hữu U",
+      "totalPrice": 65000,
+      "orderDate": 1719300000000,
+      "status": "delivered"
+    },
+    {
+      "id": "order20",
+      "customerName": "Võ Thị V",
+      "totalPrice": 220000,
+      "orderDate": 1719400000000,
+      "status": "pending"
+    },
+    {
+      "id": "order21",
+      "customerName": "Nguyễn Long",
+      "totalPrice": 180000,
+      "orderDate": 1720000000000,
+      "status": "delivered"
+    },
+    {
+      "id": "order22",
+      "customerName": "Hoàng Phương",
+      "totalPrice": 90000,
+      "orderDate": 1720100000000,
+      "status": "pending"
+    },
+    {
+      "id": "order23",
+      "customerName": "Trần Nam",
+      "totalPrice": 300000,
+      "orderDate": 1720200000000,
+      "status": "delivered"
+    },
+    {
+      "id": "order24",
+      "customerName": "Phạm Lan",
+      "totalPrice": 110000,
+      "orderDate": 1720300000000,
+      "status": "shipping"
+    },
+    {
+      "id": "order25",
+      "customerName": "Lê Bảo",
+      "totalPrice": 80000,
+      "orderDate": 1720400000000,
+      "status": "delivered"
+    },
+    {
+      "id": "order26",
+      "customerName": "Vũ Anh",
+      "totalPrice": 140000,
+      "orderDate": 1720500000000,
+      "status": "pending"
+    },
+    {
+      "id": "order27",
+      "customerName": "Đặng Thị",
+      "totalPrice": 190000,
+      "orderDate": 1720600000000,
+      "status": "delivered"
+    },
+    {
+      "id": "order28",
+      "customerName": "Ngô Thị",
+      "totalPrice": 70000,
+      "orderDate": 1720700000000,
+      "status": "shipping"
+    },
+    {
+      "id": "94fc",
+      "customerName": "12",
+      "customerPhone": "12",
+      "customerEmail": "huynguyen@gmail.com",
+      "deliveryAddress": "12",
+      "notes": "12",
+      "paymentMethod": "cod",
+      "items": [
+        {
+          "productId": "1",
+          "name": "Cà chua",
+          "price": 25000,
+          "quantity": 1,
+          "imageUrl": "https://bizweb.dktcdn.net/thumb/1024x1024/100/390/808/products/unnamed-ebae78a3-bd34-4d69-b559-464ba532e2a2.jpg?v=1592641134503",
+          "unit": "kg"
+        }
+      ],
+      "subtotalPrice": 25000,
+      "shippingFee": 30000,
+      "totalPrice": 55000,
+      "orderDate": 1753735733930,
+      "status": "pending",
+      "userId": "dbdd",
+      "userEmail": "huynguyen@gmail.com"
+    },
+    {
+      "id": "ffb4",
+      "customerName": "12",
+      "customerPhone": "12",
+      "customerEmail": "huynguyen@gmail.com",
+      "deliveryAddress": "12",
+      "notes": "1",
+      "paymentMethod": "cod",
+      "items": [
+        {
+          "productId": "2",
+          "name": "Cam Sành Hữu Cơ",
+          "price": 75000,
+          "quantity": 10,
+          "imageUrl": "https://bizweb.dktcdn.net/thumb/1024x1024/100/390/808/products/unnamed-2.jpg?v=1592642521770",
+          "unit": "kg"
+        }
+      ],
+      "subtotalPrice": 750000,
+      "shippingFee": 30000,
+      "totalPrice": 780000,
+      "orderDate": 1753736433308,
+      "status": "pending",
+      "userId": "dbdd",
+      "userEmail": "huynguyen@gmail.com"
+    }
+  ],
+  "categories": [
+    {
+      "id": "cat1",
+      "name": "Rau củ",
+      "description": "Các loại rau củ quả tươi sạch hữu cơ",
+      "productCount": 2
+    },
+    {
+      "id": "cat2",
+      "name": "Trái cây",
+      "description": "Các loại trái cây tươi ngon theo mùa hữu cơ",
+      "productCount": 2
+    },
+    {
+      "id": "cat3",
+      "name": "Trứng - Sữa",
+      "description": "Trứng và các sản phẩm từ sữa hữu cơ",
+      "productCount": 2
+    },
+    {
+      "id": "cat4",
+      "name": "Gạo - Đậu",
+      "description": "Các loại gạo và đậu hạt hữu cơ",
+      "productCount": 1
+    },
+    {
+      "id": "cat5",
+      "name": "Thịt - Hải sản",
+      "description": "Các loại thịt và hải sản tươi sống hữu cơ",
+      "productCount": 2
+    },
+    {
+      "id": "cat6",
+      "name": "Đồ khô - Gia vị",
+      "description": "Các loại đồ khô, gia vị hữu cơ",
+      "productCount": 2
+    },
+    {
+      "id": "cat7",
+      "name": "Ngũ cốc - Hạt",
+      "description": "Các loại ngũ cốc và hạt dinh dưỡng hữu cơ",
+      "productCount": 1
+    },
+    {
+      "id": "cat8",
+      "name": "Thảo mộc - Nấm",
+      "description": "Các loại thảo mộc và nấm hữu cơ tự nhiên",
+      "productCount": 1
+    },
+    {
+      "id": "cat9",
+      "name": "Thực phẩm chế biến",
+      "description": "Các sản phẩm chế biến sẵn hữu cơ",
+      "productCount": 1
+    }
+  ],
+  "users": [
+    {
+      "id": "user1",
+      "email": "customer@example.com",
+      "password": "customerpassword",
+      "displayName": "Khách Hàng Thường",
+      "role": "customer",
+      "createdAt": 1600000000,
+      "lastSignInTime": 1700000000,
+      "disabled": false
+    },
+    {
+      "id": "admin1",
+      "email": "admin@example.com",
+      "password": "adminpassword",
+      "displayName": "Quản Trị Viên",
+      "role": "admin",
+      "createdAt": 1600000000,
+      "lastSignInTime": 1700000000,
+      "disabled": false
+    },
+    {
+      "id": "user2",
+      "email": "inactive@example.com",
+      "password": "password",
+      "displayName": "Người dùng bị khóa",
+      "role": "customer",
+      "createdAt": 1600000000,
+      "lastSignInTime": 1700000000,
+      "disabled": true
+    },
+    {
+      "id": "user3",
+      "email": "customer2@example.com",
+      "password": "customerpassword2",
+      "displayName": "Khách Hàng Mới",
+      "role": "customer",
+      "createdAt": 1701200000,
+      "lastSignInTime": 1701200000,
+      "disabled": false
+    },
+    {
+      "id": "dbdd",
+      "email": "huynguyen@gmail.com",
+      "password": "123456",
+      "displayName": "huynguyen",
+      "role": "customer",
+      "createdAt": 1753735696248,
+      "lastSignInTime": 1753735696248,
+      "disabled": false,
+      "cart": []
+    }
+  ]
+}

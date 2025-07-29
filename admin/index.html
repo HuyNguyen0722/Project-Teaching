@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MindXFarm Admin - Dashboard</title>
+  <link rel="stylesheet" href="../assets/css/_base.css" />
+  <link rel="stylesheet" href="../assets/css/_layout.css" />
+  <link rel="stylesheet" href="../assets/css/_components.css" />
+  <link rel="stylesheet" href="../assets/css/_pages.css" />
+  <link rel="stylesheet" href="../assets/css/_dark-mode.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+</head>
+
+<body>
+  <div class="admin-wrapper">
+    <aside class="sidebar">
+      <div class="logo">
+        <a href="index.html"><i class="fas fa-seedling"></i> Mind<span class="logo-x">X</span><span
+            class="logo-farm">Farm</span></a>
+      </div>
+      <nav>
+        <ul>
+          <li>
+            <a href="index.html" class="active"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+          </li>
+          <li>
+            <a href="products.html"><i class="fas fa-boxes"></i> Sản Phẩm</a>
+          </li>
+          <li>
+            <a href="orders.html"><i class="fas fa-clipboard-list"></i> Đơn Hàng</a>
+          </li>
+          <li>
+            <a href="categories.html"><i class="fas fa-tags"></i> Danh Mục</a>
+          </li>
+          <li>
+            <a href="users.html"><i class="fas fa-users"></i> Người Dùng</a>
+          </li>
+          <li>
+            <a href="#" id="adminLogoutBtn"><i class="fas fa-sign-out-alt"></i> Đăng Xuất</a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main class="admin-content">
+      <header class="admin-header">
+        <h2>Dashboard</h2>
+        <div class="user-info">
+          <span><i class="fas fa-user-circle"></i> Xin chào,
+            <span id="adminNameDisplay">Admin</span>!</span>
+          <button id="darkModeToggle" class="btn-icon">
+            <i class="fas fa-moon"></i>
+          </button>
+        </div>
+      </header>
+
+      <section class="dashboard-stats">
+        <div class="stat-card">
+          <h3><i class="fas fa-money-bill-wave"></i> Tổng Doanh Thu</h3>
+          <p id="totalRevenue">Đang tải...</p>
+        </div>
+        <div class="stat-card">
+          <h3><i class="fas fa-shopping-bag"></i> Đơn Hàng Mới</h3>
+          <p id="newOrdersCount">Đang tải...</p>
+        </div>
+        <div class="stat-card">
+          <h3>
+            <i class="fas fa-exclamation-triangle"></i> Sản Phẩm Hết Hàng
+          </h3>
+          <p id="outOfStockCount">Đang tải...</p>
+        </div>
+        <div class="stat-card wide-card" id="dateTimeWeatherCard">
+          <h3><i class="fas fa-calendar-day"></i> Hôm nay</h3>
+          <div class="today-info">
+            <p id="currentDateTime">Đang tải ngày giờ...</p>
+            <div id="weatherInfo" class="weather-display">
+              Đang tải thời tiết...
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="dashboard-charts">
+        <div class="chart-card">
+          <h3>Doanh Thu Theo Tháng</h3>
+          <canvas id="revenueChart"></canvas>
+        </div>
+        <div class="chart-card">
+          <h3>Tỷ Lệ Đơn Hàng</h3>
+          <canvas id="orderStatusChart"></canvas>
+        </div>
+      </section>
+
+      <section class="latest-orders">
+        <h3><i class="fas fa-history"></i> Đơn Hàng Mới Nhất</h3>
+        <div class="order-list-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Mã Đơn</th>
+                <th>Khách Hàng</th>
+                <th>Tổng Tiền</th>
+                <th>Ngày Đặt</th>
+                <th>Trạng Thái</th>
+              </tr>
+            </thead>
+            <tbody id="latestOrderList">
+              <tr>
+                <td colspan="5" class="no-data">Đang tải đơn hàng mới nhất...</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <script type="module" src="../assets/js/main.js"></script>
+</body>
+
+</html>
