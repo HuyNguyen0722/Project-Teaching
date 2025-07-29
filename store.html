@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="vi">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MindXFarm - Sản Phẩm Tươi Sạch</title>
@@ -10,103 +9,118 @@
     <link rel="stylesheet" href="assets/css/user-components.css" />
     <link rel="stylesheet" href="assets/css/user-pages.css" />
     <link rel="stylesheet" href="assets/css/user-responsive.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
-</head>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+  </head>
 
-<body>
+  <body>
     <header>
-        <div class="container">
-            <div class="logo">
-                <a href="index.html"><i class="fas fa-leaf"></i> MindXFarm</a>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="index.html">Trang Chủ</a></li>
-                    <li><a href="store.html" class="active">Sản Phẩm</a></li>
-                    <li><a href="#">Giới Thiệu</a></li>
-                    <li><a href="#">Liên Hệ</a></li>
-                </ul>
-            </nav>
-            <div class="user-actions">
-                <a href="login.html">Đăng Nhập</a>
-                <a href="cart.html"><i class="fas fa-shopping-cart"></i> Giỏ Hàng (<span
-                        id="cartItemCount">0</span>)</a>
-            </div>
+      <div class="container">
+        <div class="logo">
+          <a href="index.html"><i class="fas fa-leaf"></i> MindXFarm</a>
         </div>
+        <nav>
+          <ul>
+            <li><a href="index.html">Trang Chủ</a></li>
+            <li><a href="store.html" class="active">Sản Phẩm</a></li>
+            <li><a href="#">Giới Thiệu</a></li>
+            <li><a href="#">Liên Hệ</a></li>
+          </ul>
+        </nav>
+        <div class="user-actions">
+          <a href="login.html">Đăng Nhập</a>
+          <a href="cart.html"
+            ><i class="fas fa-shopping-cart"></i> Giỏ Hàng (<span
+              id="cartItemCount"
+              >0</span
+            >)</a
+          >
+        </div>
+      </div>
     </header>
 
     <main>
-        <div class="container product-page-layout">
-            <aside class="sidebar-categories">
-                <h3>Danh Mục Sản Phẩm</h3>
-                <ul id="categoryListStore">
-                    <li>
-                        <a href="#" data-category="all" class="category-item active">Tất cả sản phẩm</a>
-                    </li>
-                </ul>
-            </aside>
+      <div class="container product-page-layout">
+        <aside class="sidebar-categories">
+          <h3>Danh Mục Sản Phẩm</h3>
+          <ul id="categoryListStore">
+            <li>
+              <a href="#" data-category="all" class="category-item active"
+                >Tất cả sản phẩm</a
+              >
+            </li>
+          </ul>
+        </aside>
 
-            <section class="product-listing">
-                <div class="listing-header">
-                    <h2>Tất Cả Sản Phẩm</h2>
-                    <div class="sort-filter-options">
-                        <input type="text" id="productSearchInput" placeholder="Tìm kiếm sản phẩm..." />
-                        <select id="productSortBy">
-                            <option value="default">Sắp xếp mặc định</option>
-                            <option value="price-asc">Giá: Thấp đến Cao</option>
-                            <option value="price-desc">Giá: Cao đến Thấp</option>
-                            <option value="name-asc">Tên: A-Z</option>
-                            <option value="name-desc">Tên: Z-A</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="product-grid" id="allProductsGrid"></div>
-                <div class="pagination" id="productPagination"></div>
-            </section>
-        </div>
+        <section class="product-listing">
+          <div class="listing-header">
+            <h2>Tất Cả Sản Phẩm</h2>
+            <div class="sort-filter-options">
+              <input
+                type="text"
+                id="productSearchInput"
+                placeholder="Tìm kiếm sản phẩm..."
+              />
+              <select id="productSortBy">
+                <option value="default">Sắp xếp mặc định</option>
+                <option value="price-asc">Giá: Thấp đến Cao</option>
+                <option value="price-desc">Giá: Cao đến Thấp</option>
+                <option value="name-asc">Tên: A-Z</option>
+                <option value="name-desc">Tên: Z-A</option>
+              </select>
+            </div>
+          </div>
+          <div class="product-grid" id="allProductsGrid"></div>
+          <div class="pagination" id="productPagination"></div>
+        </section>
+      </div>
     </main>
 
     <footer>
-        <div class="container">
-            <div class="footer-section about-us">
-                <h4>Về MindXFarm</h4>
-                <p>
-                    MindXFarm mang đến rau củ quả tươi sạch, hữu cơ từ nông trại đến bàn ăn
-                    của bạn. Chúng tôi cam kết chất lượng, an toàn và bền vững.
-                </p>
-            </div>
-
-            <div class="footer-section quick-links">
-                <h4>Liên kết nhanh</h4>
-                <ul>
-                    <li><a href="index.html">Trang Chủ</a></li>
-                    <li><a href="store.html">Sản Phẩm</a></li>
-                    <li><a href="#">Giới Thiệu</a></li>
-                    <li><a href="#">Liên Hệ</a></li>
-                    <li><a href="#">Chính sách đổi trả</a></li>
-                    <li><a href="#">Chính sách bảo mật</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-section contact-info">
-                <h4>Liên hệ</h4>
-                <p><i class="fas fa-map-marker-alt"></i> Tòa nhà Bạch Đằng, 268 Trần Nguyên Hãn</p>
-                <p><i class="fas fa-phone-alt"></i> 1900 6868</p>
-                <p><i class="fas fa-envelope"></i> support@mindxfarm.com</p>
-                <div class="social-links">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-youtube"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                </div>
-            </div>
+      <div class="container">
+        <div class="footer-section about-us">
+          <h4>Về MindXFarm</h4>
+          <p>
+            MindXFarm mang đến rau củ quả tươi sạch, hữu cơ từ nông trại đến bàn
+            ăn của bạn. Chúng tôi cam kết chất lượng, an toàn và bền vững.
+          </p>
         </div>
-        <div class="footer-bottom">
-            <p>&copy; 2025 MindXFarm. All rights reserved.</p>
+
+        <div class="footer-section quick-links">
+          <h4>Liên kết nhanh</h4>
+          <ul>
+            <li><a href="index.html">Trang Chủ</a></li>
+            <li><a href="store.html">Sản Phẩm</a></li>
+            <li><a href="#">Giới Thiệu</a>1</li>
+            <li><a href="#">Liên Hệ</a></li>
+            <li><a href="#">Chính sách đổi trả</a></li>
+            <li><a href="#">Chính sách bảo mật</a></li>
+          </ul>
         </div>
+
+        <div class="footer-section contact-info">
+          <h4>Liên hệ</h4>
+          <p>
+            <i class="fas fa-map-marker-alt"></i> Tòa nhà Bạch Đằng, 268 Trần
+            Nguyên Hãn, TP Hải Phòng
+          </p>
+          <p><i class="fas fa-phone-alt"></i> 1900 6868</p>
+          <p><i class="fas fa-envelope"></i> support@mindxfarm.com</p>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 MindXFarm. All rights reserved.</p>
+      </div>
     </footer>
 
     <script type="module" src="assets/js/user-main.js"></script>
-</body>
-
+  </body>
 </html>
