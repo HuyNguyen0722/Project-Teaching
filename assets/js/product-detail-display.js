@@ -6,15 +6,19 @@ export const initProductDetailPage = async () => {
     const relatedProductsGrid = document.getElementById('relatedProductsGrid');
 
     if (!productDetailContent || !relatedProductsGrid) {
+        console.warn("Product detail page elements not found. Skipping initialization.");
         return;
     }
 
     const urlParams = new URLSearchParams(window.location.search);
     const productId = urlParams.get('id');
 
+    console.log('Product Detail Page: Attempting to load product with ID:', productId);
+
     if (!productId) {
-        productDetailContent.innerHTML = '<p class="no-items">Không tìm thấy ID sản phẩm.</p>';
+        productDetailContent.innerHTML = '<p class="no-items">Không tìm thấy ID sản phẩm trong URL.</p>';
         relatedProductsGrid.innerHTML = '<p class="no-items">Không có sản phẩm liên quan.</p>';
+        console.error("Product ID is missing in URL parameter.");
         return;
     }
 
@@ -24,8 +28,11 @@ export const initProductDetailPage = async () => {
         if (!product) {
             productDetailContent.innerHTML = '<p class="no-items">Sản phẩm không tồn tại hoặc đã bị xóa.</p>';
             relatedProductsGrid.innerHTML = '<p class="no-items">Không có sản phẩm liên quan.</p>';
+            console.warn("Product not found for ID:", productId);
             return;
         }
+
+        console.log('Product loaded:', product.name);
 
         const imageUrl = product.imageUrl || 'assets/img/placeholder-product.jpg';
         const priceDisplay = product.price ? product.price.toLocaleString('vi-VN') + ' VNĐ' : 'Liên hệ';
@@ -101,6 +108,7 @@ export const initProductDetailPage = async () => {
             });
         }
 
+        console.log('Attempting to load related products...');
         const allProducts = await getProducts();
         const relatedProducts = allProducts.filter(p =>
             p.category === product.category && p.id !== product.id && p.quantity > 0
@@ -109,6 +117,7 @@ export const initProductDetailPage = async () => {
         relatedProductsGrid.innerHTML = '';
         if (relatedProducts.length === 0) {
             relatedProductsGrid.innerHTML = '<p class="no-items">Không có sản phẩm liên quan.</p>';
+            console.log('No related products found.');
         } else {
             relatedProducts.forEach(relatedProduct => {
                 const relatedProductItem = document.createElement('div');
@@ -148,10 +157,11 @@ export const initProductDetailPage = async () => {
                     addToCart(productData);
                 });
             });
+            console.log('Related products rendered.');
         }
 
     } catch (error) {
-        console.error("Error loading product detail:", error);
+        console.error("Error loading product detail or related products:", error);
         productDetailContent.innerHTML = '<p class="no-items">Lỗi khi tải chi tiết sản phẩm. Vui lòng thử lại sau.</p>';
         relatedProductsGrid.innerHTML = '<p class="no-items">Lỗi khi tải sản phẩm liên quan.</p>';
     }

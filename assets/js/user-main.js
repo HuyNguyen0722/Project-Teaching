@@ -12,8 +12,8 @@ const getCurrentPageFileName = () => {
     return parts[parts.length - 1];
 };
 
-document.addEventListener('DOMContentLoaded', async () => { // Thêm async ở đây
-    await loadInitialCart(); // QUAN TRỌNG: Đảm bảo giỏ hàng được tải trước tiên
+document.addEventListener('DOMContentLoaded', async () => {
+    await loadInitialCart();
 
     const userActionsDiv = document.querySelector('header .user-actions');
     if (userActionsDiv) {
@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', async () => { // Thêm async ở �
             initProductDetailPage();
             break;
         case 'cart.html':
-            initCartPage(); // Hàm này sẽ được gọi sau khi giỏ hàng đã được tải đầy đủ
+            initCartPage(); 
             break;
         case 'login.html':
             if (checkUserAuthStatus()) {
