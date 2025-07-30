@@ -1,5 +1,6 @@
 import { getUsers, registerUser, getUserById } from './user-api.js';
-import { loadInitialCart, clearCart } from './cart-logic.js'; // Đã đổi tên hàm import
+import { loadInitialCart, clearCart } from './cart-logic.js';
+import { showNotification } from './notification.js';
 
 const USER_TOKEN_KEY = 'mindxfarmUserToken';
 const USER_EMAIL_KEY = 'mindxfarmUserEmail';
@@ -32,7 +33,7 @@ export const userLogin = async (email, password) => {
             localStorage.setItem(USER_EMAIL_KEY, foundUser.email);
             localStorage.setItem(USER_DISPLAY_NAME_KEY, foundUser.displayName || foundUser.email.split('@')[0]);
 
-            await loadInitialCart(); // Đã đổi tên hàm gọi
+            await loadInitialCart();
 
             return { success: true, user: foundUser };
         } else {
@@ -83,9 +84,12 @@ export const userLogout = () => {
 
 export const initLoginPage = () => {
     const userLoginForm = document.getElementById('userLoginForm');
-    if (userLoginForm) {
+    const loginButton = userLoginForm ? userLoginForm.querySelector('button[type="submit"]') : null; // Lấy nút submit
+
+    if (userLoginForm && loginButton) {
         userLoginForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
+            e.preventDefault(); // Ngăn chặn reload trang ngay lập tức
+            
             const email = document.getElementById('userEmail').value;
             const password = document.getElementById('userPassword').value;
             const messageElement = document.getElementById('userLoginMessage');
@@ -93,16 +97,32 @@ export const initLoginPage = () => {
             messageElement.textContent = '';
             messageElement.className = 'message';
 
-            const result = await userLogin(email, password);
-            if (result.success) {
-                messageElement.classList.add('success');
-                messageElement.textContent = 'Đăng nhập thành công! Đang chuyển hướng...';
-                setTimeout(() => {
-                    window.location.href = 'index.html';
-                }, 1000);
-            } else {
+            try {
+                const result = await userLogin(email, password);
+                if (result.success) {
+                    messageElement.classList.add('success');
+                    messageElement.textContent = 'Đăng nhập thành công! Đang chuyển hướng...';
+                    showNotification('Đăng nhập thành công!', 'success');
+                    setTimeout(() => {
+                        window.location.href = 'index.html';
+                    }, 1000);
+                } else {
+                    messageElement.classList.add('error');
+                    messageElement.textContent = result.message || 'Đăng nhập thất bại.';
+                    showNotification(result.message || 'Đăng nhập thất bại.', 'error');
+                }
+            } catch (error) {
+                console.error("Error during login form submission:", error);
                 messageElement.classList.add('error');
-                messageElement.textContent = result.message || 'Đăng nhập thất bại.';
+                messageElement.textContent = 'Đã xảy ra lỗi không mong muốn. Vui lòng thử lại.';
+                showNotification('Đã xảy ra lỗi không mong muốn. Vui lòng thử lại.', 'error');
+            }
+        });
+
+        loginButton.addEventListener('click', (e) => {
+            if (loginButton.type === 'submit') {
+                e.preventDefault(); 
+                userLoginForm.requestSubmit(); 
             }
         });
     }
@@ -110,9 +130,12 @@ export const initLoginPage = () => {
 
 export const initRegisterPage = () => {
     const userRegisterForm = document.getElementById('userRegisterForm');
-    if (userRegisterForm) {
+    const registerButton = userRegisterForm ? userRegisterForm.querySelector('button[type="submit"]') : null; 
+
+    if (userRegisterForm && registerButton) {
         userRegisterForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
+            e.preventDefault(); 
+
             const email = document.getElementById('regEmail').value;
             const displayName = document.getElementById('regDisplayName').value;
             const phone = document.getElementById('regPhone').value;
@@ -127,24 +150,42 @@ export const initRegisterPage = () => {
             if (password.length < 6) {
                 messageElement.classList.add('error');
                 messageElement.textContent = 'Mật khẩu phải có ít nhất 6 ký tự.';
+                showNotification('Mật khẩu phải có ít nhất 6 ký tự.', 'error');
                 return;
             }
             if (password !== confirmPassword) {
                 messageElement.classList.add('error');
                 messageElement.textContent = 'Mật khẩu xác nhận không khớp.';
+                showNotification('Mật khẩu xác nhận không khớp.', 'error');
                 return;
             }
 
-            const result = await userRegister(email, password, displayName, phone, address);
-            if (result.success) {
-                messageElement.classList.add('success');
-                messageElement.textContent = 'Đăng ký thành công! Đang chuyển hướng đến trang đăng nhập...';
-                setTimeout(() => {
-                    window.location.href = 'login.html';
-                }, 1500);
-            } else {
+            try {
+                const result = await userRegister(email, password, displayName, phone, address);
+                if (result.success) {
+                    messageElement.classList.add('success');
+                    messageElement.textContent = 'Đăng ký thành công! Đang chuyển hướng đến trang đăng nhập...';
+                    showNotification('Đăng ký thành công!', 'success');
+                    setTimeout(() => {
+                        window.location.href = 'login.html';
+                    }, 1500);
+                } else {
+                    messageElement.classList.add('error');
+                    messageElement.textContent = result.message || 'Đăng ký thất bại.';
+                    showNotification(result.message || 'Đăng ký thất bại.', 'error');
+                }
+            } catch (error) {
+                console.error("Error during register form submission:", error);
                 messageElement.classList.add('error');
-                messageElement.textContent = result.message || 'Đăng ký thất bại.';
+                messageElement.textContent = 'Đã xảy ra lỗi không mong muốn. Vui lòng thử lại.';
+                showNotification('Đã xảy ra lỗi không mong muốn. Vui lòng thử lại.', 'error');
+            }
+        });
+
+        registerButton.addEventListener('click', (e) => {
+            if (registerButton.type === 'submit') { 
+                e.preventDefault(); 
+                userRegisterForm.requestSubmit(); 
             }
         });
     }

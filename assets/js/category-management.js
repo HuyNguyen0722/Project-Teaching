@@ -1,4 +1,3 @@
-// assets/js/category-management.js
 
 import { getCategories, addCategory, updateCategory, deleteCategory, getCategoryById } from './api.js';
 
@@ -8,7 +7,6 @@ export const initCategoryManagement = () => {
     const categorySearchInput = document.getElementById('categorySearchInput');
     const categorySearchBtn = document.getElementById('categorySearchBtn');
 
-    // Category Modal Elements
     const categoryModal = document.getElementById('categoryModal');
     const closeButton = categoryModal ? categoryModal.querySelector('.close-button') : null;
     const categoryForm = document.getElementById('categoryForm');

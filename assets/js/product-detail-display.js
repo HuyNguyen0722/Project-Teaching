@@ -1,5 +1,6 @@
 import { getProductById, getProducts } from './user-api.js';
 import { addToCart } from './cart-logic.js';
+import { showNotification } from './notification.js';
 
 export const initProductDetailPage = async () => {
     const productDetailContent = document.getElementById('productDetailContent');
@@ -19,6 +20,7 @@ export const initProductDetailPage = async () => {
         productDetailContent.innerHTML = '<p class="no-items">Không tìm thấy ID sản phẩm trong URL.</p>';
         relatedProductsGrid.innerHTML = '<p class="no-items">Không có sản phẩm liên quan.</p>';
         console.error("Product ID is missing in URL parameter.");
+        showNotification('Không tìm thấy ID sản phẩm trong URL.', 'error');
         return;
     }
 
@@ -29,6 +31,7 @@ export const initProductDetailPage = async () => {
             productDetailContent.innerHTML = '<p class="no-items">Sản phẩm không tồn tại hoặc đã bị xóa.</p>';
             relatedProductsGrid.innerHTML = '<p class="no-items">Không có sản phẩm liên quan.</p>';
             console.warn("Product not found for ID:", productId);
+            showNotification('Sản phẩm không tồn tại hoặc đã bị xóa.', 'error');
             return;
         }
 
@@ -52,11 +55,11 @@ export const initProductDetailPage = async () => {
                     <p><strong>Tình trạng:</strong> ${product.quantity > 0 ? 'Còn hàng' : 'Hết hàng'}</p>
                 </div>
                 <div class="quantity-control">
-                    <button id="decreaseQuantity">-</button>
+                    <button type="button" id="decreaseQuantity">-</button>
                     <input type="number" id="productQuantityInput" value="1" min="1" max="${product.quantity}" />
-                    <button id="increaseQuantity">+</button>
+                    <button type="button" id="increaseQuantity">+</button>
                 </div>
-                <button id="addToCartDetailBtn" class="btn btn-primary add-to-cart-btn"
+                <button type="button" id="addToCartDetailBtn" class="btn btn-primary add-to-cart-btn"
                     data-id="${product.id}"
                     data-name="${product.name}"
                     data-price="${product.price}"
@@ -78,32 +81,41 @@ export const initProductDetailPage = async () => {
         const addToCartDetailBtn = document.getElementById('addToCartDetailBtn');
 
         if (productQuantityInput && decreaseQuantityBtn && increaseQuantityBtn && addToCartDetailBtn) {
-            decreaseQuantityBtn.addEventListener('click', () => {
+            decreaseQuantityBtn.addEventListener('click', (e) => {
+                e.preventDefault(); // Ngăn chặn reload nếu button nằm trong form
                 let currentVal = parseInt(productQuantityInput.value);
                 if (currentVal > 1) {
                     productQuantityInput.value = currentVal - 1;
                 }
             });
 
-            increaseQuantityBtn.addEventListener('click', () => {
+            increaseQuantityBtn.addEventListener('click', (e) => {
+                e.preventDefault(); // Ngăn chặn reload nếu button nằm trong form
                 let currentVal = parseInt(productQuantityInput.value);
                 if (currentVal < product.quantity) {
                     productQuantityInput.value = currentVal + 1;
                 }
             });
 
-            addToCartDetailBtn.addEventListener('click', () => {
-                const quantityToAdd = parseInt(productQuantityInput.value);
-                if (quantityToAdd > 0 && quantityToAdd <= product.quantity) {
-                    addToCart({
-                        id: product.id,
-                        name: product.name,
-                        price: product.price,
-                        imageUrl: product.imageUrl,
-                        unit: product.unit || ''
-                    }, quantityToAdd);
-                } else {
-                    alert('Số lượng không hợp lệ hoặc vượt quá số lượng tồn kho.');
+            addToCartDetailBtn.addEventListener('click', async (e) => {
+                e.preventDefault(); 
+
+                try {
+                    const quantityToAdd = parseInt(productQuantityInput.value);
+                    if (quantityToAdd > 0 && quantityToAdd <= product.quantity) {
+                        await addToCart({
+                            id: product.id,
+                            name: product.name,
+                            price: product.price,
+                            imageUrl: product.imageUrl,
+                            unit: product.unit || ''
+                        }, quantityToAdd);
+                    } else {
+                        showNotification('Số lượng không hợp lệ hoặc vượt quá số lượng tồn kho.', 'error');
+                    }
+                } catch (error) {
+                    console.error('Error adding product to cart from product detail page:', error);
+                    showNotification('Không thể thêm sản phẩm vào giỏ hàng. Vui lòng thử lại.', 'error');
                 }
             });
         }
@@ -133,6 +145,7 @@ export const initProductDetailPage = async () => {
                     </a>
                     <p class="price">${relatedPriceDisplay}${relatedUnitDisplay}</p>
                     <button
+                        type="button"
                         class="add-to-cart-btn"
                         data-id="${relatedProduct.id}"
                         data-name="${relatedProduct.name}"
@@ -146,15 +159,22 @@ export const initProductDetailPage = async () => {
                 relatedProductsGrid.appendChild(relatedProductItem);
             });
             relatedProductsGrid.querySelectorAll('.add-to-cart-btn').forEach(button => {
-                button.addEventListener('click', (e) => {
-                    const productData = {
-                        id: e.currentTarget.dataset.id,
-                        name: e.currentTarget.dataset.name,
-                        price: parseFloat(e.currentTarget.dataset.price),
-                        imageUrl: e.currentTarget.dataset.imageUrl,
-                        unit: e.currentTarget.dataset.unit
-                    };
-                    addToCart(productData);
+                button.addEventListener('click', async (e) => {
+                    e.preventDefault(); // QUAN TRỌNG: Ngăn chặn reload trang
+
+                    try {
+                        const productData = {
+                            id: e.currentTarget.dataset.id,
+                            name: e.currentTarget.dataset.name,
+                            price: parseFloat(e.currentTarget.dataset.price),
+                            imageUrl: e.currentTarget.dataset.imageUrl,
+                            unit: e.currentTarget.dataset.unit
+                        };
+                        await addToCart(productData);
+                    } catch (error) {
+                        console.error('Error adding related product to cart:', error);
+                        showNotification('Không thể thêm sản phẩm liên quan vào giỏ hàng. Vui lòng thử lại.', 'error');
+                    }
                 });
             });
             console.log('Related products rendered.');
@@ -164,5 +184,6 @@ export const initProductDetailPage = async () => {
         console.error("Error loading product detail or related products:", error);
         productDetailContent.innerHTML = '<p class="no-items">Lỗi khi tải chi tiết sản phẩm. Vui lòng thử lại sau.</p>';
         relatedProductsGrid.innerHTML = '<p class="no-items">Lỗi khi tải sản phẩm liên quan.</p>';
+        showNotification('Lỗi khi tải chi tiết sản phẩm. Vui lòng thử lại.', 'error');
     }
 };

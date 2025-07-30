@@ -1,4 +1,5 @@
 import { getCart, removeFromCart, updateCartItemQuantity, getCartTotalPrice } from './cart-logic.js';
+import { showNotification } from './notification.js';
 
 export const initCartPage = () => {
     const cartTableBody = document.getElementById('cartTableBody');
@@ -57,16 +58,22 @@ export const initCartPage = () => {
     };
 
     const attachCartEventListeners = () => {
+
         cartTableBody.querySelectorAll('.remove-item-btn').forEach(button => {
             button.addEventListener('click', (e) => {
+                // e.preventDefault(); // Không cần thiết nếu button không có type="submit" và không nằm trong form
                 const productId = e.currentTarget.dataset.id;
-                removeFromCart(productId);
-                renderCartItems();
+                if (confirm('Bạn có chắc chắn muốn xóa sản phẩm này khỏi giỏ hàng?')) {
+                    removeFromCart(productId);
+                    renderCartItems();
+                    showNotification('Đã xóa sản phẩm khỏi giỏ hàng.', 'info');
+                }
             });
         });
 
         cartTableBody.querySelectorAll('.decrease-quantity-cart').forEach(button => {
             button.addEventListener('click', (e) => {
+                e.preventDefault();
                 const productId = e.currentTarget.dataset.id;
                 const input = cartTableBody.querySelector(`.cart-item-quantity[data-id="${productId}"]`);
                 let currentQuantity = parseInt(input.value);
@@ -79,6 +86,7 @@ export const initCartPage = () => {
 
         cartTableBody.querySelectorAll('.increase-quantity-cart').forEach(button => {
             button.addEventListener('click', (e) => {
+e.preventDefault();
                 const productId = e.currentTarget.dataset.id;
                 const input = cartTableBody.querySelector(`.cart-item-quantity[data-id="${productId}"]`);
                 let currentQuantity = parseInt(input.value);
@@ -89,6 +97,7 @@ export const initCartPage = () => {
 
         cartTableBody.querySelectorAll('.cart-item-quantity').forEach(input => {
             input.addEventListener('change', (e) => {
+                e.preventDefault();
                 const productId = e.target.dataset.id;
                 let newQuantity = parseInt(e.target.value);
                 if (isNaN(newQuantity) || newQuantity < 1) {
@@ -104,7 +113,7 @@ export const initCartPage = () => {
         if (getCart().length > 0) {
             window.location.href = 'checkout.html';
         } else {
-            alert('Giỏ hàng của bạn đang trống. Vui lòng thêm sản phẩm vào giỏ.');
+            showNotification('Giỏ hàng của bạn đang trống. Vui lòng thêm sản phẩm vào giỏ.', 'info');
         }
     });
 

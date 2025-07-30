@@ -1,5 +1,6 @@
 import { getProducts, getCategories } from './user-api.js';
 import { addToCart } from './cart-logic.js';
+import { showNotification } from './notification.js';
 
 export const initStorePage = async () => {
     const allProductsGrid = document.getElementById('allProductsGrid');
@@ -49,6 +50,7 @@ export const initStorePage = async () => {
                 </a>
                 <p class="price">${priceDisplay}${unitDisplay}</p>
                 <button
+                    type="button"
                     class="add-to-cart-btn"
                     data-id="${product.id}"
                     data-name="${product.name}"
@@ -63,15 +65,23 @@ export const initStorePage = async () => {
         });
 
         allProductsGrid.querySelectorAll('.add-to-cart-btn').forEach(button => {
-            button.addEventListener('click', (e) => {
-                const productData = {
-                    id: e.currentTarget.dataset.id,
-                    name: e.currentTarget.dataset.name,
-                    price: parseFloat(e.currentTarget.dataset.price),
-                    imageUrl: e.currentTarget.dataset.imageUrl,
-                    unit: e.currentTarget.dataset.unit
-                };
-                addToCart(productData);
+            button.addEventListener('click', async (e) => {
+                e.preventDefault(); 
+
+                try {
+                    const productData = {
+                        id: e.currentTarget.dataset.id,
+                        name: e.currentTarget.dataset.name,
+                        price: parseFloat(e.currentTarget.dataset.price),
+                        imageUrl: e.currentTarget.dataset.imageUrl,
+                        unit: e.currentTarget.dataset.unit
+                    };
+                    await addToCart(productData);
+                    // Không có setTimeout ở đây vì trang không nên reload
+                } catch (error) {
+                    console.error('Error adding product to cart from store page:', error);
+                    showNotification('Không thể thêm sản phẩm vào giỏ hàng. Vui lòng thử lại.', 'error');
+                }
             });
         });
     };
@@ -84,12 +94,12 @@ export const initStorePage = async () => {
             return;
         }
 
-
         const prevButton = document.createElement('button');
         prevButton.textContent = 'Trước';
         prevButton.classList.add('prev-next');
         prevButton.disabled = currentPage === 1;
-        prevButton.addEventListener('click', () => {
+        prevButton.addEventListener('click', (e) => {
+            e.preventDefault(); // Ngăn chặn reload trang
             if (currentPage > 1) {
                 currentPage--;
                 applyFiltersAndSort();
@@ -98,14 +108,14 @@ export const initStorePage = async () => {
         });
         productPagination.appendChild(prevButton);
 
-
         for (let i = 1; i <= totalPages; i++) {
             const pageButton = document.createElement('button');
             pageButton.textContent = i;
             if (i === currentPage) {
                 pageButton.classList.add('active');
             }
-            pageButton.addEventListener('click', () => {
+            pageButton.addEventListener('click', (e) => {
+                e.preventDefault();
                 currentPage = i;
                 applyFiltersAndSort();
                 window.scrollTo(0, 0);
@@ -117,7 +127,8 @@ export const initStorePage = async () => {
         nextButton.textContent = 'Sau';
         nextButton.classList.add('prev-next');
         nextButton.disabled = currentPage === totalPages;
-        nextButton.addEventListener('click', () => {
+        nextButton.addEventListener('click', (e) => {
+            e.preventDefault(); 
             if (currentPage < totalPages) {
                 currentPage++;
                 applyFiltersAndSort();
@@ -126,7 +137,6 @@ export const initStorePage = async () => {
         });
         productPagination.appendChild(nextButton);
     };
-
 
     const applyFiltersAndSort = () => {
         let tempProducts = allProducts;
@@ -143,7 +153,6 @@ export const initStorePage = async () => {
                 (p.category && p.category.toLowerCase().includes(searchTermLower))
             );
         }
-
 
         tempProducts.sort((a, b) => {
             if (currentSortBy === 'price-asc') return a.price - b.price;
@@ -192,6 +201,7 @@ export const initStorePage = async () => {
                 <li><a href="#" data-category="all" class="category-item active">Tất cả sản phẩm</a></li>
                 <li><p class="no-items" style="padding-left:15px;">Không tải được danh mục.</p></li>
             `;
+            showNotification('Không thể tải danh mục sản phẩm.', 'error');
         }
     };
 
@@ -199,9 +209,11 @@ export const initStorePage = async () => {
         try {
             allProducts = await getProducts();
             applyFiltersAndSort();
-        } catch (error) {
+        }
+        catch (error) {
             console.error("Error loading products:", error);
             allProductsGrid.innerHTML = '<p class="no-items">Không thể tải sản phẩm. Vui lòng thử lại sau.</p>';
+            showNotification('Không thể tải sản phẩm. Vui lòng thử lại.', 'error');
         }
     };
 

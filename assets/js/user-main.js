@@ -1,4 +1,4 @@
-import { updateCartCountDisplay, loadInitialCart } from './cart-logic.js'; // Thêm loadInitialCart
+import { updateCartCountDisplay, loadInitialCart } from './cart-logic.js';
 import { initHomePage } from './home-page-display.js';
 import { initStorePage } from './store-display.js';
 import { initProductDetailPage } from './product-detail-display.js';
@@ -27,7 +27,6 @@ document.addEventListener('DOMContentLoaded', async () => {
             document.getElementById('userLogoutBtn').addEventListener('click', (e) => {
                 e.preventDefault();
                 userLogout();
-                window.location.reload();
             });
         } else {
             userActionsDiv.innerHTML = `
@@ -52,7 +51,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             initProductDetailPage();
             break;
         case 'cart.html':
-            initCartPage(); 
+            initCartPage();
             break;
         case 'login.html':
             if (checkUserAuthStatus()) {

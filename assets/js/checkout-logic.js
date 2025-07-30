@@ -1,9 +1,11 @@
 import { getCart, getCartTotalPrice, clearCart } from './cart-logic.js';
 import { placeOrder } from './user-api.js';
 import { getLoggedInUserData } from './user-auth.js';
+import { showNotification } from './notification.js';
 
 export const initCheckoutPage = () => {
     const checkoutForm = document.getElementById('checkoutForm');
+    const placeOrderBtn = document.getElementById('placeOrderBtn'); 
     const checkoutOrderItems = document.getElementById('checkoutOrderItems');
     const checkoutSubtotalElement = document.getElementById('checkoutSubtotal');
     const shippingFeeElement = document.getElementById('shippingFee');
@@ -12,7 +14,7 @@ export const initCheckoutPage = () => {
 
     const SHIPPING_FEE = 30000;
 
-    if (!checkoutForm || !checkoutOrderItems || !checkoutSubtotalElement || !shippingFeeElement || !checkoutFinalTotalElement || !checkoutMessageElement) {
+    if (!checkoutForm || !checkoutOrderItems || !checkoutSubtotalElement || !shippingFeeElement || !checkoutFinalTotalElement || !checkoutMessageElement || !placeOrderBtn) {
         return;
     }
 
@@ -57,7 +59,7 @@ export const initCheckoutPage = () => {
     };
 
     checkoutForm.addEventListener('submit', async (e) => {
-        e.preventDefault();
+        e.preventDefault(); 
 
         checkoutMessageElement.textContent = '';
         checkoutMessageElement.className = 'message';
@@ -79,6 +81,7 @@ export const initCheckoutPage = () => {
         if (!fullName || !phone || !address) {
             checkoutMessageElement.classList.add('error');
             checkoutMessageElement.textContent = 'Vui lòng điền đầy đủ thông tin bắt buộc (Họ và tên, Số điện thoại, Địa chỉ).';
+            showNotification('Vui lòng điền đầy đủ thông tin bắt buộc.', 'error');
             return;
         }
 
@@ -120,6 +123,7 @@ export const initCheckoutPage = () => {
             clearCart();
             renderOrderSummary();
 
+            showNotification('Đơn hàng của bạn đã được đặt thành công!', 'success');
             setTimeout(() => {
                 window.location.href = 'index.html';
             }, 3000);
@@ -128,6 +132,14 @@ export const initCheckoutPage = () => {
             console.error('Error placing order:', error);
             checkoutMessageElement.classList.add('error');
             checkoutMessageElement.textContent = 'Có lỗi xảy ra khi đặt hàng. Vui lòng thử lại.';
+            showNotification('Có lỗi xảy ra khi đặt hàng. Vui lòng thử lại.', 'error');
+        }
+    });
+
+    placeOrderBtn.addEventListener('click', (e) => {
+        if (placeOrderBtn.type === 'submit') {
+            e.preventDefault();
+            checkoutForm.requestSubmit();
         }
     });
 

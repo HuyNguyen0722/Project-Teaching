@@ -1,4 +1,3 @@
-// assets/js/dark-mode.js
 
 export const setupDarkModeToggle = () => {
     const darkModeToggle = document.getElementById('darkModeToggle');
@@ -9,11 +8,11 @@ export const setupDarkModeToggle = () => {
     if (savedMode === 'dark') {
         body.classList.add('dark-mode');
         if (darkModeToggle) {
-            darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>'; // Đổi icon sang mặt trời
+            darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>'; 
         }
     } else {
         if (darkModeToggle) {
-            darkModeToggle.innerHTML = '<i class="fas fa-moon"></i>'; // Icon mặt trăng mặc định
+            darkModeToggle.innerHTML = '<i class="fas fa-moon"></i>'; 
         }
     }
 

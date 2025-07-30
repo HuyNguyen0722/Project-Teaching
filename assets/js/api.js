@@ -1,8 +1,6 @@
-// assets/js/api.js
 
-const BASE_URL = 'http://localhost:3000'; // Đảm bảo cổng này trùng với cổng bạn chạy json-server
+const BASE_URL = 'http://localhost:3000'; 
 
-// Hàm chung để gửi yêu cầu HTTP
 async function request(url, method = 'GET', data = null) {
     const options = {
         method,
@@ -19,7 +17,6 @@ async function request(url, method = 'GET', data = null) {
             const errorText = await response.text();
             throw new Error(`HTTP error! status: ${response.status}, message: ${errorText}`);
         }
-        // Trả về null nếu không có nội dung (ví dụ: DELETE)
         return response.status === 204 ? null : await response.json();
     } catch (error) {
         console.error(`API ${method} to ${url} failed:`, error);
@@ -46,8 +43,7 @@ export const getOrders = async () => request(`${BASE_URL}/orders`);
 export const getOrderById = async (id) => request(`${BASE_URL}/orders/${id}`);
 export const updateOrderStatus = async (id, status) => request(`${BASE_URL}/orders/${id}`, 'PATCH', { status });
 
-// --- API cho Users (bao gồm cả admin và customer) ---
+// --- API cho Users ---
 export const getUsers = async () => request(`${BASE_URL}/users`);
 export const getUserById = async (id) => request(`${BASE_URL}/users/${id}`);
-// Hàm addUser đã bị loại bỏ theo yêu cầu của bạn (người dùng tự đăng ký)
 export const updateUser = async (id, userData) => request(`${BASE_URL}/users/${id}`, 'PATCH', userData); // Dùng PATCH để cập nhật từng phần

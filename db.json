@@ -443,6 +443,208 @@
       "status": "pending",
       "userId": "dbdd",
       "userEmail": "huynguyen@gmail.com"
+    },
+    {
+      "id": "d358",
+      "customerName": "Nguyễn Văn Huy",
+      "customerPhone": "0934281259",
+      "customerEmail": "huynguyen@gmail.com",
+      "deliveryAddress": "123123",
+      "notes": "12",
+      "paymentMethod": "cod",
+      "items": [
+        {
+          "productId": "4",
+          "name": "Trứng Gà Ta Hữu Cơ (10 quả)",
+          "price": 60000,
+          "quantity": 1,
+          "imageUrl": "https://bizweb.dktcdn.net/thumb/large/100/390/808/products/7dc26e6782aedbf8f16f9d8d0e316f87.jpg?v=1604733176453",
+          "unit": "vỉ"
+        },
+        {
+          "productId": "10",
+          "name": "Yến Mạch Hữu Cơ (500g)",
+          "price": 80000,
+          "quantity": 1,
+          "imageUrl": "https://bizweb.dktcdn.net/thumb/1024x1024/100/390/808/products/yen-mach-can-mong-huu-co-markal-500g-1-052fef376da945888341479130655b57-master.jpg?v=1593490159843",
+          "unit": "gói"
+        },
+        {
+          "productId": "14",
+          "name": "Bánh Quy Yến Mạch Hữu Cơ",
+          "price": 70000,
+          "quantity": 3,
+          "imageUrl": "https://bizweb.dktcdn.net/thumb/1024x1024/100/390/808/products/fb-img-1689059069901.jpg?v=1689059417933",
+          "unit": "gói"
+        }
+      ],
+      "subtotalPrice": 350000,
+      "shippingFee": 30000,
+      "totalPrice": 380000,
+      "orderDate": 1753861543875,
+      "status": "pending",
+      "userId": "dbdd",
+      "userEmail": "huynguyen@gmail.com"
+    },
+    {
+      "id": "3f14",
+      "customerName": "Nguyễn Văn Huy",
+      "customerPhone": "1",
+      "customerEmail": "huynguyen1@gmail.com",
+      "deliveryAddress": "1",
+      "notes": "1",
+      "paymentMethod": "cod",
+      "items": [
+        {
+          "productId": "4",
+          "name": "Trứng Gà Ta Hữu Cơ (10 quả)",
+          "price": 60000,
+          "quantity": 1,
+          "imageUrl": "https://bizweb.dktcdn.net/thumb/large/100/390/808/products/7dc26e6782aedbf8f16f9d8d0e316f87.jpg?v=1604733176453",
+          "unit": "vỉ"
+        },
+        {
+          "productId": "1",
+          "name": "Cà chua",
+          "price": 25000,
+          "quantity": 1,
+          "imageUrl": "https://bizweb.dktcdn.net/thumb/1024x1024/100/390/808/products/unnamed-ebae78a3-bd34-4d69-b559-464ba532e2a2.jpg?v=1592641134503",
+          "unit": "kg"
+        }
+      ],
+      "subtotalPrice": 85000,
+      "shippingFee": 30000,
+      "totalPrice": 115000,
+      "orderDate": 1753861765862,
+      "status": "pending",
+      "userId": "dbdd",
+      "userEmail": "huynguyen@gmail.com"
+    },
+    {
+      "id": "783b",
+      "customerName": "Nguyễn Văn Huy",
+      "customerPhone": "0934281259",
+      "customerEmail": "huynguyen@gmail.com",
+      "deliveryAddress": "11",
+      "notes": "1",
+      "paymentMethod": "cod",
+      "items": [
+        {
+          "productId": "4",
+          "name": "Trứng Gà Ta Hữu Cơ (10 quả)",
+          "price": 60000,
+          "quantity": 1,
+          "imageUrl": "https://bizweb.dktcdn.net/thumb/large/100/390/808/products/7dc26e6782aedbf8f16f9d8d0e316f87.jpg?v=1604733176453",
+          "unit": "vỉ"
+        },
+        {
+          "productId": "14",
+          "name": "Bánh Quy Yến Mạch Hữu Cơ",
+          "price": 70000,
+          "quantity": 6,
+          "imageUrl": "https://bizweb.dktcdn.net/thumb/1024x1024/100/390/808/products/fb-img-1689059069901.jpg?v=1689059417933",
+          "unit": "gói"
+        },
+        {
+          "productId": "7",
+          "name": "Thịt Bò Thăn Hữu Cơ",
+          "price": 280000,
+          "quantity": 1,
+          "imageUrl": "https://bizweb.dktcdn.net/thumb/1024x1024/100/390/808/products/bo-mem.jpg?v=1704956641723",
+          "unit": "kg"
+        }
+      ],
+      "subtotalPrice": 760000,
+      "shippingFee": 30000,
+      "totalPrice": 790000,
+      "orderDate": 1753862004541,
+      "status": "pending",
+      "userId": "dbdd",
+      "userEmail": "huynguyen@gmail.com"
+    },
+    {
+      "id": "1b97",
+      "customerName": "1",
+      "customerPhone": "1",
+      "customerEmail": "huynguyen@gmail.com",
+      "deliveryAddress": "1",
+      "notes": "1",
+      "paymentMethod": "cod",
+      "items": [
+        {
+          "productId": "14",
+          "name": "Bánh Quy Yến Mạch Hữu Cơ",
+          "price": 70000,
+          "quantity": 2,
+          "imageUrl": "https://bizweb.dktcdn.net/thumb/1024x1024/100/390/808/products/fb-img-1689059069901.jpg?v=1689059417933",
+          "unit": "gói"
+        },
+        {
+          "productId": "4",
+          "name": "Trứng Gà Ta Hữu Cơ (10 quả)",
+          "price": 60000,
+          "quantity": 2,
+          "imageUrl": "https://bizweb.dktcdn.net/thumb/large/100/390/808/products/7dc26e6782aedbf8f16f9d8d0e316f87.jpg?v=1604733176453",
+          "unit": "vỉ"
+        },
+        {
+          "productId": "6",
+          "name": "Bưởi Da Xanh Hữu Cơ",
+          "price": 95000,
+          "quantity": 1,
+          "imageUrl": "https://down-vn.img.susercontent.com/file/vn-11134207-7ra0g-m6bfhitkol4zdd@resize_w450_nl.webp",
+          "unit": "quả"
+        }
+      ],
+      "subtotalPrice": 355000,
+      "shippingFee": 30000,
+      "totalPrice": 385000,
+      "orderDate": 1753862427551,
+      "status": "pending",
+      "userId": "dbdd",
+      "userEmail": "huynguyen@gmail.com"
+    },
+    {
+      "id": "9e95",
+      "customerName": "Nguyễn Văn Huy",
+      "customerPhone": "0866102177",
+      "customerEmail": "huynguyen@gmail.com",
+      "deliveryAddress": "123123",
+      "notes": "",
+      "paymentMethod": "cod",
+      "items": [
+        {
+          "productId": "4",
+          "name": "Trứng Gà Ta Hữu Cơ (10 quả)",
+          "price": 60000,
+          "quantity": 5,
+          "imageUrl": "https://bizweb.dktcdn.net/thumb/large/100/390/808/products/7dc26e6782aedbf8f16f9d8d0e316f87.jpg?v=1604733176453",
+          "unit": "vỉ"
+        },
+        {
+          "productId": "14",
+          "name": "Bánh Quy Yến Mạch Hữu Cơ",
+          "price": 70000,
+          "quantity": 14,
+          "imageUrl": "https://bizweb.dktcdn.net/thumb/1024x1024/100/390/808/products/fb-img-1689059069901.jpg?v=1689059417933",
+          "unit": "gói"
+        },
+        {
+          "productId": "7",
+          "name": "Thịt Bò Thăn Hữu Cơ",
+          "price": 280000,
+          "quantity": 1,
+          "imageUrl": "https://bizweb.dktcdn.net/thumb/1024x1024/100/390/808/products/bo-mem.jpg?v=1704956641723",
+          "unit": "kg"
+        }
+      ],
+      "subtotalPrice": 1560000,
+      "shippingFee": 30000,
+      "totalPrice": 1590000,
+      "orderDate": 1753870187004,
+      "status": "pending",
+      "userId": "dbdd",
+      "userEmail": "huynguyen@gmail.com"
     }
   ],
   "categories": [

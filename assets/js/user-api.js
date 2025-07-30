@@ -31,7 +31,7 @@ export const getCategories = async () => request(`${BASE_URL}/categories`);
 
 export const registerUser = async (userData) => request(`${BASE_URL}/users`, 'POST', userData);
 export const getUsers = async () => request(`${BASE_URL}/users`);
-export const getUserById = async (id) => request(`${BASE_URL}/users/${id}`); 
-export const updateUser = async (id, userData) => request(`${BASE_URL}/users/${id}`, 'PATCH', userData); 
+export const getUserById = async (id) => request(`${BASE_URL}/users/${id}`);
+export const updateUser = async (id, userData) => request(`${BASE_URL}/users/${id}`, 'PATCH', userData);
 
 export const placeOrder = async (orderData) => request(`${BASE_URL}/orders`, 'POST', orderData);

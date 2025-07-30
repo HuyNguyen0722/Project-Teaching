@@ -1,5 +1,6 @@
-import { getLoggedInUserData, checkUserAuthStatus } from './user-auth.js'; // Import checkUserAuthStatus
+import { getLoggedInUserData, checkUserAuthStatus } from './user-auth.js';
 import { getUserById, updateUser } from './user-api.js';
+import { showNotification } from './notification.js';
 
 const CART_STORAGE_KEY_LOCAL = 'mindxfarmCartLocal';
 
@@ -25,7 +26,7 @@ const saveCart = async () => {
             console.log('Cart saved to DB successfully.');
         } catch (error) {
             console.error('Error saving cart to user data:', error);
-            alert('Lỗi: Không thể lưu giỏ hàng của bạn.');
+            showNotification('Lỗi: Không thể lưu giỏ hàng của bạn.', 'error');
         }
     } else {
         console.log('Saving to LocalStorage. Cart data:', JSON.stringify(currentCart));
@@ -40,11 +41,10 @@ export const getCart = () => {
 };
 
 export const addToCart = async (product, quantity = 1) => {
-    // Kiểm tra trạng thái đăng nhập
     if (!checkUserAuthStatus()) {
-        alert('Vui lòng đăng nhập để thêm sản phẩm vào giỏ hàng.');
-        window.location.href = 'login.html'; // Chuyển hướng đến trang đăng nhập
-        return; // Dừng hàm tại đây
+        showNotification('Vui lòng đăng nhập để thêm sản phẩm vào giỏ hàng.', 'info');
+        setTimeout(() => { window.location.href = 'login.html'; }, 1500);
+        return;
     }
 
     console.log('Attempting to add product:', product.name, 'Quantity:', quantity);
@@ -65,7 +65,7 @@ export const addToCart = async (product, quantity = 1) => {
         console.log('New product added to cart. Current cart length:', currentCart.length);
     }
     await saveCart();
-    alert(`Đã thêm ${quantity} ${product.name} vào giỏ hàng!`);
+    showNotification(`Đã thêm ${quantity} ${product.name} vào giỏ hàng!`, 'success');
     console.log('Cart after adding product (currentCart):', JSON.stringify(currentCart));
 };
 
@@ -127,7 +127,7 @@ export const loadInitialCart = async () => {
         console.log('Current cart after merge (before saving to DB):', JSON.stringify(currentCart));
         localStorage.removeItem(CART_STORAGE_KEY_LOCAL);
         console.log('Local Storage cart cleared after merge.');
-        await saveCart(); // Save the merged cart to DB
+        await saveCart();
     } else if (loggedInUser) {
         console.log('Scenario: User is logged in, no local cart. Loading cart from DB...');
         const userDbData = await getUserById(loggedInUser.id);
@@ -141,3 +141,6 @@ export const loadInitialCart = async () => {
     updateCartCountDisplay();
     console.log('--- Finished loadInitialCart ---');
 };
+
+document.addEventListener('DOMContentLoaded', async () => {
+});
