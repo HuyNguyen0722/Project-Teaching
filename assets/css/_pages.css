@@ -1,25 +1,18 @@
-/* assets/css/_pages.css */
 
-/* Các biến CSS cho màu sắc biểu đồ và text để dễ dàng quản lý Dark Mode */
 :root {
     --chart-grid-color: rgba(200, 200, 200, 0.2);
     --text-color-primary: #333;
     --text-color-secondary: #555;
     --background-color: #f0f2f5;
-    /* Mặc định cho body */
 }
 
 body.dark-mode {
-    /* Các thuộc tính dark-mode khác từ _dark-mode.css (hoặc nếu bạn gộp vào đây) */
     --chart-grid-color: rgba(100, 100, 100, 0.3);
-    /* Màu lưới tối hơn trong dark mode */
     --text-color-primary: #e2e8f0;
     --text-color-secondary: #a0aec0;
     --background-color: #1a202c;
-    /* Màu nền cho dark mode */
 }
 
-/* Kiểu dáng chung cho các phần quản lý (sản phẩm, đơn hàng, danh mục, người dùng) */
 .product-list-container table,
 .order-list-container table,
 .category-list-container table,
@@ -49,7 +42,6 @@ body.dark-mode {
 .user-list-container th {
     background-color: #f8f8f8;
     color: var(--text-color-secondary);
-    /* Sử dụng biến CSS */
     font-weight: 600;
     transition: background-color 0.3s ease, color 0.3s ease;
 }
@@ -118,14 +110,11 @@ body.dark-mode {
     text-align: left;
 }
 
-/* User management specific adjustments for actions bar if different */
 .user-management .actions-bar {
     justify-content: flex-end;
-    /* Only search bar and add user button */
 }
 
 
-/* --- Dashboard Specific Styles --- */
 .dashboard-charts {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -140,25 +129,18 @@ body.dark-mode {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
     height: 400px;
-    /* **QUAN TRỌNG:** Đặt một chiều cao cố định cho container */
     position: relative;
-    /* **QUAN TRỌNG:** Để canvas bên trong có thể chiếm 100% chiều cao */
     overflow: hidden;
-    /* **QUAN TRỌNG:** Cắt bỏ bất kỳ nội dung thừa nào */
     display: flex;
-    /* Sử dụng flexbox để căn chỉnh nội dung */
     flex-direction: column;
-    /* Xếp các mục con theo cột */
     justify-content: space-between;
-    /* Đẩy tiêu đề lên trên, biểu đồ xuống dưới */
     align-items: center;
-    /* Căn giữa theo chiều ngang */
 }
 
 .chart-card h3 {
     font-size: 1.3rem;
     color: var(--text-color-primary);
-    /* Sử dụng biến CSS */
+    /* Sử dụng biến  */
     margin-bottom: 20px;
     text-align: center;
     transition: color 0.3s ease;
@@ -166,13 +148,9 @@ body.dark-mode {
 
 .chart-card canvas {
     flex-grow: 1;
-    /* Biểu đồ sẽ chiếm không gian còn lại */
     max-height: 100%;
-    /* **QUAN TRỌNG:** Đảm bảo chiều cao tối đa bằng phần tử cha */
     width: 100% !important;
-    /* **QUAN TRỌNG:** Buộc chiều rộng 100% và ghi đè nếu có style inline */
     height: 100% !important;
-    /* **QUAN TRỌNG:** Buộc chiều cao 100% và ghi đè nếu có style inline */
 }
 
 .no-chart-data {
@@ -187,7 +165,6 @@ body.dark-mode {
     background-color: var(--background-color);
     border-radius: 5px;
     z-index: 1;
-    /* Đảm bảo nó nằm trên canvas */
 }
 
 
@@ -210,7 +187,6 @@ body.dark-mode {
     transition: color 0.3s ease;
 }
 
-/* Điều chỉnh bảng cho phần latest-orders */
 .latest-orders .order-list-container table {
     width: 100%;
     border-collapse: collapse;
@@ -243,7 +219,6 @@ body.dark-mode {
 }
 
 
-/* Dark Mode adjustments for new dashboard elements */
 body.dark-mode .dashboard-charts .chart-card,
 body.dark-mode .latest-orders {
     background-color: #2d3748;

@@ -645,6 +645,32 @@
       "status": "pending",
       "userId": "dbdd",
       "userEmail": "huynguyen@gmail.com"
+    },
+    {
+      "id": "8b52",
+      "customerName": "Nguyễn Văn Huy",
+      "customerPhone": "0934281259",
+      "customerEmail": "abc@gmail.com",
+      "deliveryAddress": "123123",
+      "notes": "2",
+      "paymentMethod": "cod",
+      "items": [
+        {
+          "productId": "4",
+          "name": "Trứng Gà Ta Hữu Cơ (10 quả)",
+          "price": 60000,
+          "quantity": 1,
+          "imageUrl": "https://bizweb.dktcdn.net/thumb/large/100/390/808/products/7dc26e6782aedbf8f16f9d8d0e316f87.jpg?v=1604733176453",
+          "unit": "vỉ"
+        }
+      ],
+      "subtotalPrice": 60000,
+      "shippingFee": 30000,
+      "totalPrice": 90000,
+      "orderDate": 1753873419742,
+      "status": "pending",
+      "userId": "0d53",
+      "userEmail": "abc@gmail.com"
     }
   ],
   "categories": [
@@ -752,6 +778,19 @@
       "role": "customer",
       "createdAt": 1753735696248,
       "lastSignInTime": 1753735696248,
+      "disabled": false,
+      "cart": []
+    },
+    {
+      "id": "0d53",
+      "email": "abc@gmail.com",
+      "password": "123456",
+      "displayName": "nguyễn văn huy",
+      "phone": "0934281251",
+      "address": "41abc",
+      "role": "customer",
+      "createdAt": 1753873387510,
+      "lastSignInTime": 1753873387510,
       "disabled": false,
       "cart": []
     }
